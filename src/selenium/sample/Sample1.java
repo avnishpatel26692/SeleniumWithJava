@@ -21,7 +21,7 @@ public class Sample1 {
 //        driver.get("https://google.com");
         driver.get("https://kristinek.github.io/site/");
 
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
         driver.manage().window().maximize();
 
         /*driver.findElement(By.xpath("//input[@aria-label = `Search`]")).sendKeys("some text");
@@ -35,7 +35,7 @@ public class Sample1 {
         System.out.println(driver.getCurrentUrl());
 //
 //        //Sleep for 10 seconds
-        Thread.sleep(10000);
+        Thread.sleep(5000);
 
         //Close browser
         driver.quit();
