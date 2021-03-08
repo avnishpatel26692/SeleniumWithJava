@@ -32,9 +32,6 @@ public class Sample2 {
         System.out.println(driver.findElement(By.tagName("input")).getText());
 
 
-        System.out.println(driver.findElement(By.tagName("h2")).getAttribute("id");
-
-
 
         System.out.println(driver.findElement(By.id("heading_1")).getText());
 //        //get title of page
