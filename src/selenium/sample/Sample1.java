@@ -14,14 +14,14 @@ public class Sample1 {
     @Test
     public void goToHomepage() throws Exception {
         //define driver
-        System.setProperty("webdriver.chrome.driver", libWithDriversLocation + "chromedriver89.exe");
+        System.setProperty("webdriver.chrome.driver", libWithDriversLocation + "chromedriver88.exe");
         WebDriver driver = new ChromeDriver();
 
         //open test homepage
 //        driver.get("https://google.com");
         driver.get("https://kristinek.github.io/site/");
 
-        driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().maximize();
 
         /*driver.findElement(By.xpath("//input[@aria-label = `Search`]")).sendKeys("some text");
