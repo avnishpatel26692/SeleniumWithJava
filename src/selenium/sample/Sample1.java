@@ -19,7 +19,7 @@ public class Sample1 {
 
         //open test homepage
 //        driver.get("https://google.com");
-        driver.get("https://kristinek.github.io/site/");
+        driver.get("https://kristinek.github.io/site/examples/locators");
 
         driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -27,7 +27,7 @@ public class Sample1 {
         /*driver.findElement(By.xpath("//input[@aria-label = `Search`]")).sendKeys("some text");
         driver.findElement(By.xpath("//input[@type = `submit`]")).click();*/
 
-        System.out.println(driver.findElement(By.id("h1")).getText());
+//        System.out.println(driver.findElement(By.id("h1")).getText());
 //        //get title of page
         System.out.println(driver.getTitle());
 //
@@ -35,7 +35,7 @@ public class Sample1 {
         System.out.println(driver.getCurrentUrl());
 //
 //        //Sleep for 10 seconds
-        Thread.sleep(5000);
+        Thread.sleep(3000);
 
         //Close browser
         driver.quit();
