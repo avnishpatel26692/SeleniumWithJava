@@ -65,4 +65,16 @@ public class Sample5 extends Sample{
         assertEquals("You have dared to deny me!!!", driver.findElement(By.id("textForAlerts")).getText());
     }
 
+    @Test
+    public void test5(){
+        driver.get(URL_ALERTS);
+
+        driver.findElement(By.className("w3-khaki")).click();
+        Alert alert = driver.switchTo().alert();
+        assertEquals("Please enter a number", alert.getText());
+        alert.sendKeys("0.05549501144970015");
+        alert.accept();
+        
+    }
+
 }
