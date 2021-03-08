@@ -71,17 +71,17 @@ public class Activity4 {
     public void enterTextInTextArea(){
 
         WebElement element = driver.findElement(By.name("vfb-10"));
-        System.out.println(element.getText());
-        System.out.println(element.getAttribute("value"));
+        System.out.println("Text: " + element.getText());
+        System.out.println("Value: " + element.getAttribute("value"));
         System.out.println("--------------");
         element.sendKeys("qqq");
-        System.out.println(element.getText());
-        System.out.println(element.getAttribute("value"));
+        System.out.println("Text: " + element.getText());
+        System.out.println("Value: " + element.getAttribute("value"));
         System.out.println("--------------");
         element.clear();
         element.sendKeys("www");
-        System.out.println(element.getText());
-        System.out.println(element.getAttribute("value"));
+        System.out.println("Text: " + element.getText());
+        System.out.println("Value: " + element.getAttribute("value"));
     }
 
 }
