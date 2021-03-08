@@ -71,7 +71,7 @@ public class Sample5 {
     }
 
     @Test
-    public void alertOnclickingButton()
+    public void alertOnClickingButton()
     {
         WebElement redBtn = driver.findElement(By.className("w3-red"));
         redBtn.click();
@@ -83,11 +83,8 @@ public class Sample5 {
         Assert.assertTrue(text.getText().isEmpty());
     }
 
-
     @Test
-
-    public void popUpConform() {
-
+    public void popUpConfirm() {
         WebElement greenBtn = driver.findElement(By.className("w3-teal"));
         greenBtn.click();
         Alert alert = driver.switchTo().alert();
@@ -98,8 +95,7 @@ public class Sample5 {
         Assert.assertEquals("Why on earth have you agreed to it?!", text.getText());
     }
     @Test
-    public void popUpDenied()
-    {
+    public void popUpDenied() {
         WebElement greenBtn = driver.findElement(By.className("w3-teal"));
         greenBtn.click();
         Alert alert = driver.switchTo().alert();
@@ -111,8 +107,7 @@ public class Sample5 {
     }
 
     @Test
-    public void popUpEnterNumber()
-    {
+    public void popUpEnterNumber() {
         WebElement yellowBtn = driver.findElement(By.className("w3-khaki"));
         yellowBtn.click();
         Alert alert = driver.switchTo().alert();
@@ -123,7 +118,5 @@ public class Sample5 {
         WebElement text = driver.findElement(By.id("textForAlerts"));
         Assert.assertTrue(text.getText().contains("instead of 25"));
     }
-
-
 }
 
