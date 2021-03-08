@@ -88,16 +88,24 @@ public class Activity4 {
     @Test
     public void enterTextInTextBox(){
         WebElement element = driver.findElement(By.id("text"));
-        System.out.println("Text: " + element.getText());
-        System.out.println("Value: " + element.getAttribute("value"));
+        String text = element.getText();
+        String value = element.getAttribute("value");
+        System.out.println("Text: " + text);
+        System.out.println("Value: " + value);
+        Assert.assertEquals("This is a text box", value);
         System.out.println("-------------------");
+
         element.sendKeys("some keys");
-        System.out.println("Text: " + element.getText());
-        System.out.println("Value: " + element.getAttribute("value"));
+        System.out.println("Text: " + text);
+        System.out.println("Value: " + value);
+        //Assert.assertEquals("This is a text boxsome keys", value);
+        System.out.println("-------------------");
+
         element.clear();
         element.sendKeys("To be or not to be");
-        System.out.println("Text: " + element.getText());
-        System.out.println("Value: " + element.getAttribute("value"));
+        System.out.println("Text: " + text);
+        System.out.println("Value: " + value);
+        Assert.assertEquals("To be or not to be", value);
     }
 
 
