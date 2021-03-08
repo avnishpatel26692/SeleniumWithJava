@@ -1,6 +1,7 @@
 package selenium.sample;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.Alert;
@@ -16,7 +17,6 @@ public class Activity5 {
     WebDriver driver;
 
     @Before
-
     public void initBrowser() {
         System.setProperty("webdriver.chrome.driver", libWithDriversLocation + "chromedriver89.exe");
         driver = new ChromeDriver();
@@ -38,6 +38,7 @@ public class Activity5 {
         alert.accept();
         WebElement element = driver.findElement(By.id("heading"));
         System.out.println(element.getText());
+        Assert.assertEquals("This page is alerted", element.getText());
 
     }
     //alertOnclickingButton - open “Alert and pop-ups”, click on element with className “w3-red”,
@@ -53,6 +54,7 @@ public class Activity5 {
         alert.accept();
         WebElement textForAlerts = driver.findElement(By.id("textForAlerts"));
         System.out.println(textForAlerts.getText());
+        Assert.assertEquals("", textForAlerts.getText());
 
     }
     //popUpConform - open “Alert and pop-ups”, click on element with className “w3-teal”,
@@ -68,6 +70,7 @@ public class Activity5 {
         alert.accept();
         WebElement textForAlerts = driver.findElement(By.id("textForAlerts"));
         System.out.println(textForAlerts.getText());
+        Assert.assertEquals("Why on earth have you agreed to it?!", textForAlerts.getText());
 
     }
     //popUpDeny - open “Alert and pop-ups”, click on element with className “w3-teal”,
@@ -83,14 +86,23 @@ public class Activity5 {
         alert.dismiss();
         WebElement textForAlerts = driver.findElement(By.id("textForAlerts"));
         System.out.println(textForAlerts.getText());
+        Assert.assertEquals("You have dared to deny me!!!", textForAlerts.getText());
 
     }
-
-
-
-
-
-
-
-
+    //5.popUpEnterNumber - open “Alert and pop-ups”, click on element with className “w3-khaki”, catch alert, check its text,
+    // send a number as a String via sendKeys and accept alert, check text of element with id “textForAlerts”
+    @Test
+    public void popUpEnterNumber(){
+        driver.get("https://kristinek.github.io/site/examples/alerts_popups");
+        driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
+        WebElement alertButton = driver.findElement(By.className("w3-khaki"));
+        alertButton.click();
+        Alert alert = driver.switchTo().alert();
+        System.out.println(alert.getText());
+        alert.sendKeys("12");
+        alert.accept();
+        WebElement textForAlerts = driver.findElement(By.id("textForAlerts"));
+        System.out.println(textForAlerts.getText());
+        Assert.assertTrue(textForAlerts.getText().contains("instead of 12"));
+    }
 }
