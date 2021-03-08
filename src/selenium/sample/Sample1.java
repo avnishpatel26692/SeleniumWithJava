@@ -37,7 +37,7 @@ public class Sample1 {
 //        //Sleep for 10 seconds : without this closes web-page immediately, this one sets time to show
         Thread.sleep(5000);
 
-        //Close browser
+        //Close browser.example
         driver.quit();
     }
 }
