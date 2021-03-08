@@ -50,7 +50,7 @@ public class Sample5 {
         Assert.assertEquals("I am an alert box!", message);
         alert.dismiss();
         WebElement text = driver.findElement(By.id("textForAlerts"));
-        Assert.assertEquals("", text.getText());
+        Assert.assertTrue(text.getText().isEmpty());
     }
 
     @Test
