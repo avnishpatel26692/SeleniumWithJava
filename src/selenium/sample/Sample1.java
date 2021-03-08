@@ -37,7 +37,7 @@ public class Sample1 {
 //        //Sleep for 10 seconds
         Thread.sleep(5000);
 
-        //Close browser
+        //Close browser- Anna
         driver.quit();
     }
 }
