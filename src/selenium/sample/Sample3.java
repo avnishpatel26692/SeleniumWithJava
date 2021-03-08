@@ -1,10 +1,12 @@
 package selenium.sample;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -26,25 +28,44 @@ public class Sample3 {
     }
 
     @Test
-    public void test1() throws Exception {
-        System.out.println("Test1");
+    public void assertEqualsExample() throws Exception {
+        WebElement heading1 = driver.findElement(By.id("heading_1"));
+        String actualValue = heading1.getText();
+        String expectedValue = "Heading 1";
+        Assert.assertEquals("This should be failed",expectedValue, actualValue);
     }
 
     @Test
-    public void test2(){
-        System.out.println("Test2");
-
+    public void assertTrueExample(){
+        String expectedValue = "This is a button1";
+        WebElement btn = driver.findElement(By.name("randomButton1"));
+        String actualValue = btn.getAttribute("value");
+        Assert.assertTrue(actualValue.contains(expectedValue));
     }
 
     @Test
-    public void test3(){
-        System.out.println("Test3");
+    public void assertFalseExample(){
+        String expectedValue = "This is a button2";
+        WebElement btn = driver.findElement(By.name("randomButton1"));
+        String actualValue = btn.getAttribute("value");
+        Assert.assertFalse(actualValue.contains(expectedValue));
+    }
 
+    @Test
+    public void fail(){
+        //write any logic or conditions, if not satisfied then you can fail the test
+        Assert.fail();
+    }
+
+    @Test
+    public void failWithMessage(){
+        //write any logic or conditions, if not satisfied then you can fail the test
+        Assert.fail("I want to fail this test");
     }
 
     @After
     public void tearDown() throws Exception {
-        Thread.sleep(3000);
+        Thread.sleep(1500);
 
         //Close browser
         driver.quit();
