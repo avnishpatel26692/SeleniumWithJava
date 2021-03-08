@@ -74,7 +74,7 @@ public class Sample5 extends Sample{
         assertEquals("Please enter a number", alert.getText());
         alert.sendKeys("0.05549501144970015");
         alert.accept();
-        
+
     }
 
 }
