@@ -96,6 +96,7 @@ public class Sample5 {
         WebElement checkTxt = driver.findElement(By.id("textForAlerts"));
         String text = checkTxt.getText();
         Assert.assertEquals("", text);
+     //   Assert.assertTrue(text.getText.isEmpty); //< another way to check for empty text
     }
     @Test
     public void test3popUpConfirm() {
@@ -129,7 +130,29 @@ public class Sample5 {
         String text = checkTxt.getText();
         Assert.assertEquals("You have dared to deny me!!!", text);
     }
+    @Test
+    public void test5popUpEnterNum() {
+        //open test page
+        driver.get("https://kristinek.github.io/site/examples/alerts_popups");
+        driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
 
+        WebElement khakiBtn = driver.findElement(By.className("w3-khaki"));
+        khakiBtn.click();
+        Alert alert = driver.switchTo().alert(); //check alert msg text
+        System.out.println(alert.getText());
+        String message = alert.getText();
+        Assert.assertEquals("Please enter a number", message);
+
+        Alert alert3 = driver.switchTo().alert();
+        alert3 = driver.switchTo().alert();
+        alert3.sendKeys("22");
+
+        alert3.accept();
+        WebElement checkTxt = driver.findElement(By.id("textForAlerts"));
+        String text = checkTxt.getText();
+        //Assert.assertEquals("Wrong! It is 0.5214690195316252 instead of 22", text); <<can not be applied, each time new number is generated
+        System.out.println(checkTxt.getText());
+    }
     @After
     public void tearDown() throws Exception {
         Thread.sleep(1500);
