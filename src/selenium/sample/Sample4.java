@@ -55,10 +55,10 @@ public class Sample4 {
     }
     @Test
     public void enterTextInTextArea() {
-       WebElement getElem = driver.findElement(By.id("text_area"));
+        WebElement getElem = driver.findElement(By.id("text_area"));
         String textBefore = getElem.getText();
         String expectedBefore = "This is a text area";
-        Assert.assertEquals("This is a text area",expectedBefore);
+        Assert.assertEquals(expectedBefore,textBefore);
 
         WebElement getElem2 = driver.findElement(By.name("vfb-10"));
         getElem2.click();
@@ -71,9 +71,22 @@ public class Sample4 {
         driver.findElement(By.id("clear_result_button_text_area")).click();
         String textAfter2 = getElem2.getText();
         Assert.assertEquals("This is a text area",textAfter2);
-
     }
+    @Test
+    public void enterTextInTextBox() {
+        WebElement getText1 = driver.findElement(By.id("text"));
+        String text = getText1.getText();
+        Assert.assertEquals("",text);
 
+        getText1.sendKeys(" 123ABC");
+        text = getText1.getText();
+        Assert.assertEquals("This is a text box 123ABC",text);
+
+        getText1.clear();
+        getText1.sendKeys(" 123ABC");
+        text = getText1.getText();
+        Assert.assertEquals(" 123ABC",text);
+    }
 
 
 
