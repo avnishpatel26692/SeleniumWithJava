@@ -83,5 +83,22 @@ public class Activity4 {
         System.out.println("Text: " + element.getText());
         System.out.println("Value: " + element.getAttribute("value"));
     }
+    //.enterTextInTextBox - check text and value of element with id “text”,
+    // send keys to this element, check text/value, clear and send some other keys, check text/value
+    @Test
+    public void enterTextInTextBox(){
+        WebElement element = driver.findElement(By.id("text"));
+        System.out.println("Text: " + element.getText());
+        System.out.println("Value: " + element.getAttribute("value"));
+        System.out.println("-------------------");
+        element.sendKeys("some keys");
+        System.out.println("Text: " + element.getText());
+        System.out.println("Value: " + element.getAttribute("value"));
+        element.clear();
+        element.sendKeys("To be or not to be");
+        System.out.println("Text: " + element.getText());
+        System.out.println("Value: " + element.getAttribute("value"));
+    }
+
 
 }
