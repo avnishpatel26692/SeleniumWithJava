@@ -27,7 +27,7 @@ public class Sample1 {
         /*driver.findElement(By.xpath("//input[@aria-label = `Search`]")).sendKeys("some text");
         driver.findElement(By.xpath("//input[@type = `submit`]")).click();*/
 
-        System.out.println(driver.findElement(By.id("h1")).getText());
+        //System.out.println(driver.findElement(By.id("h1")).getText());
 //        //get title of page
         System.out.println(driver.getTitle());
 //
