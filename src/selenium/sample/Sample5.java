@@ -87,8 +87,23 @@ public class Sample5 {
         Assert.assertEquals("You have dared to deny me!!!",textAfter);
     }
 
+    @Test
+    public void popUpEnterNumber () {
+        driver.get("https://kristinek.github.io/site/examples/alerts_popups");
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        WebElement getElem = driver.findElement(By.className("w3-khaki"));
+        getElem.click();
+
+        Alert alertOnOpen = driver.switchTo().alert();
+        alertOnOpen.sendKeys("111");
+        alertOnOpen.accept();
+
+        WebElement getElem2 = driver.findElement(By.id("textForAlerts"));
+        String textAfter = getElem2.getText();
+        Assert.assertTrue(textAfter.contains("111"));
 
 
+    }
     @After
     public void tearDown() throws Exception {
         Thread.sleep(5000);
