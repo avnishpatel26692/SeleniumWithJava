@@ -19,7 +19,7 @@ public class Sample1 {
 
         //open test homepage
 //        driver.get("https://google.com");
-        driver.get("https://kristinek.github.io/site/");
+        driver.get("https://kristinek.github.io/site/tasks/enter_a_number");
 
         driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -36,6 +36,7 @@ public class Sample1 {
 //
 //        //Sleep for 10 seconds
         Thread.sleep(5000);
+
 
         //Close browser
         driver.quit();
