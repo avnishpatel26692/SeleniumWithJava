@@ -40,7 +40,7 @@ public class Sample5 {
         Assert.assertEquals("This page is alerted", text.getText());
     }
     @Test
-    public void alertOnclickingButton()
+    public void alertOnClickingButton()
     {
         WebElement redBtn = driver.findElement(By.className("w3-red"));
         redBtn.click();
