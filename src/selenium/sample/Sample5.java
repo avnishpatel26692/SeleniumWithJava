@@ -70,8 +70,6 @@ public class Sample5 {
         confOrDenial.click();
         Alert alert2 = driver.switchTo().alert();
         System.out.println(alert2.getText());
-//        Alert alert1 = driver.switchTo().alert();
-//        alert1.sendKeys("12");
         alert2.accept();
         WebElement confirmationText = driver.findElement(By.id("textForAlerts"));
         System.out.println(confirmationText.getText());
@@ -82,6 +80,20 @@ public class Sample5 {
         alert3.dismiss();
         WebElement dismissText = driver.findElement(By.id("textForAlerts"));
         System.out.println(dismissText.getText());
+    }
+
+    @Test
+    public void popEnterNumber() {
+        WebElement clickToEnterNumber = driver.findElement(By.className("w3-khaki"));
+        clickToEnterNumber.click();
+        Alert alert4 = driver.switchTo().alert();
+        System.out.println(alert4.getText());
+
+        alert4.sendKeys("10");
+        alert4.accept();
+        WebElement confirmationText = driver.findElement(By.id("textForAlerts"));
+        System.out.println(confirmationText.getText());
+
     }
 
     @After
