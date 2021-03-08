@@ -24,18 +24,14 @@ public class Sample1 {
         driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
         driver.manage().window().maximize();
 
-        /*driver.findElement(By.xpath("//input[@aria-label = `Search`]")).sendKeys("some text");
-        driver.findElement(By.xpath("//input[@type = `submit`]")).click();*/
 
-        System.out.println(driver.findElement(By.id("h1")).getText());
-//        //get title of page
         System.out.println(driver.getTitle());
 //
 //        //get URL of current page
         System.out.println(driver.getCurrentUrl());
 //
 //        //Sleep for 10 seconds
-        Thread.sleep(5000);
+        Thread.sleep(3000);
 
         //Close browser
         driver.quit();
