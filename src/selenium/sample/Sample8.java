@@ -1,6 +1,7 @@
 package selenium.sample;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -9,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Sample8 {
@@ -88,6 +90,44 @@ public class Sample8 {
         System.out.println("After clicking on checkbox2 : " + radioBtn2.isSelected());
         System.out.println("After clicking on checkbox 2, checkbox1 is : " + radioBtn1.isSelected());
 
+    }
+
+    @Test
+    public void selectCheckBox()
+    {
+        List<WebElement> checkboxes = driver.findElements(By.cssSelector(".w3-check[type='checkbox']"));
+
+        for(WebElement element : checkboxes)
+        {
+            Assert.assertFalse(element.isSelected());
+            element.click();
+            Assert.assertTrue(element.isSelected());
+            element.click();
+            Assert.assertFalse(element.isSelected());
+        }
+
+        WebElement checkbox3 = driver.findElement(By.cssSelector(".w3-check[value='Option 3'][type='checkbox']"));
+        Assert.assertFalse(checkbox3.isSelected());
+        checkbox3.click();
+        Assert.assertTrue(checkbox3.isSelected());
+    }
+
+    @Test
+    public void selectRadioButton()
+    {
+        List<WebElement> radioButtons = driver.findElements(By.cssSelector(".w3-check[type='radio']"));
+
+        for(WebElement radioBtn : radioButtons)
+        {
+            Assert.assertFalse(radioBtn.isSelected());
+            radioBtn.click();
+            Assert.assertTrue(radioBtn.isSelected());
+        }
+
+        WebElement radioBtn2 = driver.findElement(By.cssSelector(".w3-check[value='Option 2'][type='radio']"));
+        Assert.assertFalse(radioBtn2.isSelected());
+        radioBtn2.click();
+        Assert.assertTrue(radioBtn2.isSelected());
     }
 
 
