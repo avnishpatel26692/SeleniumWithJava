@@ -131,10 +131,12 @@ public class Sample8 {
 
         }
 
-        WebElement radio0 = driver.findElement(By.cssSelector(".w3-check[value='Option 2'][type='radio']"));
+        WebElement radio0 = driver.findElement(By.cssSelector(".w3-check[value='Option 1'][type='radio']"));
+        WebElement radio9 = driver.findElement(By.cssSelector(".w3-check[value='Option 2'][type='radio']"));
+        Assert.assertFalse(radio9.isSelected());
+        radio9.click();
         Assert.assertFalse(radio0.isSelected());
-        radio0.click();
-        Assert.assertTrue(radio0.isSelected());
+        Assert.assertTrue(radio9.isSelected());
 
     }
 
