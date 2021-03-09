@@ -10,6 +10,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -132,6 +134,32 @@ public class Sample8 {
         Assert.assertFalse(radioBtn1.isSelected());
         Assert.assertTrue(radioBtn2.isSelected());
     }
+
+    @Test
+    public void chooseDateViaCalendar() throws Exception
+    {
+        Calendar cal = Calendar.getInstance();  //    get today date
+        cal.add(Calendar.MONTH, -10); // Select Month -10 (Current is March,2021 It will select May,2020)
+        String result = new SimpleDateFormat("MM/15/yyyy").format(cal.getTime());// 05/15/2020
+        System.out.println("Expected Result" +result);
+
+        WebElement calendarTextbox = driver.findElement(By.cssSelector("input#vfb-8"));
+        Assert.assertEquals("",calendarTextbox.getAttribute("value"));
+        calendarTextbox.click();
+
+
+        for(int i=0; i<10; i++)
+        {
+            Thread.sleep(500);
+            WebElement previousMonthBtn = driver.findElement(By.xpath("//span[text()='Prev']"));
+            previousMonthBtn.click();
+        }
+
+        driver.findElement(By.xpath("//a[text()='15']")).click();
+        System.out.println("Actual value : " + calendarTextbox.getAttribute("value"));
+        Assert.assertEquals(result, calendarTextbox.getAttribute("value"));
+    }
+
 
 
 
