@@ -1,0 +1,76 @@
+package selenium.sample;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+public class sample6 {
+    static String libWithDriversLocation = System.getProperty("user.dir") + "\\lib\\";
+    WebDriver driver;
+
+    @Before
+    public void initBrowser() {
+        System.setProperty("webdriver.chrome.driver", libWithDriversLocation + "chromedriver89.exe");
+        driver = new ChromeDriver();
+
+        //open test homepage
+        driver.get("https://kristinek.github.io/site/examples/locators");
+        driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
+    }
+
+
+    //5.findElementByClassAll - where you find elements by className “test” and then print out
+    //•number of elements
+    //•the text of this elements
+    //•3rd element
+    @Test
+    public void findElementByClassAll(){
+        List<WebElement> list = driver.findElements(By.className("test"));
+        System.out.println("number of Elements: " + list.size());
+        for (int i=0; i<list.size(); i++)
+        //for(WebElement text:list){
+        //    System.out.println(text.getText());
+        {
+            System.out.println(list.get(i).getText());
+        }
+        System.out.println("3rd element is :" + list.get(2).getText());
+
+    }
+    //6.findElementByXPath - where you find element by xpath:
+    //•“//div[@id='nonStandartText']/*[contains(@class,'text amazing')]” and then print out the text of this element
+    //•“//p[@class='text' and @id='dummy']” and then print out the text of this element
+    @Test
+    public void findElementByXPath(){
+        WebElement xpathElement = driver.findElement(By.xpath("//div[@id='nonStandartText']/*[contains(@class,'text amazing')]"));
+        System.out.println(xpathElement.getText());
+        WebElement xpathElement2 = driver.findElement(By.xpath("//p[@class='text' and @id='dummy']"));
+        System.out.println(xpathElement2.getText());
+    }
+    //7.findElementByCssName - where you find element by css:
+    //•“div#nonStandartText > .amazing” and then print out the text of this element
+    //•“.text#dummy” and then print out the text of this element
+
+    @Test
+    public void findElementByCssName() {
+        WebElement cssElement = driver.findElement(By.cssSelector("div#nonStandartText > .amazing"));
+        System.out.println(cssElement.getText());
+
+        WebElement cssElement2 = driver.findElement(By.cssSelector(".text#dummy"));
+        System.out.println(cssElement2.getText());
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        Thread.sleep(3000);
+        //Close browser
+        driver.quit();
+    }
+}
