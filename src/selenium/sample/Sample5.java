@@ -23,7 +23,7 @@ public class Sample5 {
         driver = new ChromeDriver();
 
         //open test homepage
-        driver.get("https://kristinek.github.io/site/examples/actions");
+        driver.get("https://kristinek.github.io/site/examples/alerts_popups");
         driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
@@ -74,20 +74,6 @@ public class Sample5 {
         WebElement text = driver.findElement(By.id("textForAlerts"));
         Assert.assertEquals("You have dared to deny me!!!", text.getText());
     }
-    @Test
-    public void popUpEnterNumber()
-    {
-        WebElement yellowBtn = driver.findElement(By.className("w3-khaki"));
-        yellowBtn.click();
-        Alert alert = driver.switchTo().alert();
-        String message = alert.getText();
-        Assert.assertEquals("Please enter a number", message);
-        alert.sendKeys("26");
-        alert.accept();
-        WebElement text = driver.findElement(By.id("textForAlerts"));
-        Assert.assertTrue(text.getText().contains("instead of 26"));
-    }
-
 
 
     @After
