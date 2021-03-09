@@ -39,6 +39,20 @@ public class Sample7 {
 
     }
 
+    @Test
+    public void verifyFont() {
+        WebElement para7 = driver.findElement(By.cssSelector("p.w3-pink"));
+        System.out.println(para7.getCssValue("font-size"));
+        Assert.assertEquals("15px", para7.getCssValue("font-size"));
+
+        System.out.println(para7.getCssValue("font-family"));
+
+        System.out.println(para7.getCssValue("color"));
+        Assert.assertEquals("rgba(255, 255, 255, 1)", para7.getCssValue("color"));
+
+
+    }
+
     @After
     public void tearDown() throws Exception {
         Thread.sleep(3000);
