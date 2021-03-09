@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -153,7 +154,30 @@ public class Sample4 {
         getElem.sendKeys("12/15/2014");
         Assert.assertEquals("12/15/2014",getElem.getAttribute("value"));
     }
+    @Test
+    public void selectOptionByText() {
+        WebElement dropdown = driver.findElement(By.xpath("//select[@name='vfb-12']"));
+        Select obj = new Select(dropdown);
+        obj.selectByVisibleText("Option 2");
+        Assert.assertEquals("Option 2",obj.getFirstSelectedOption().getText());
+    }
 
+
+    @Test
+    public void selectOptionByIndex() {
+        WebElement dropdown = driver.findElement(By.xpath("//select[@name='vfb-12']"));
+        Select obj = new Select(dropdown);
+        obj.selectByIndex(1);
+        Assert.assertEquals("Option 1",obj.getFirstSelectedOption().getText());
+    }
+
+    @Test
+    public void selectOptionByValue() {
+        WebElement dropdown = driver.findElement(By.xpath("//select[@name='vfb-12']"));
+        Select obj = new Select(dropdown);
+        obj.selectByValue("value3");
+        Assert.assertEquals("Option 3",obj.getFirstSelectedOption().getText());
+    }
 
 
 
