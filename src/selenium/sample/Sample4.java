@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Sample4 {
@@ -88,11 +89,46 @@ public class Sample4 {
         Assert.assertEquals(" 123ABC",text);
     }
 
+    @Test
+    public void selectCheckBox() {
+        List<WebElement> checkboxes = driver.findElements(By.cssSelector(".w3-check[type='checkbox']"));
+
+        for(WebElement element: checkboxes) {
+            Assert.assertFalse(element.isSelected());
+                    element.click();
+            Assert.assertTrue(element.isSelected());
+                    element.click();
+            Assert.assertFalse(element.isSelected());
+        }
+        WebElement checkbox3 = driver.findElement(By.cssSelector(".w3-check[value='Option 3'][type='checkbox']"));
+        Assert.assertFalse(checkbox3.isSelected());
+        checkbox3.click();
+        Assert.assertTrue(checkbox3.isSelected());
+
+        }
+
+    @Test
+    public void selectRadioButton(){
+        List<WebElement> checkradio = driver.findElements(By.cssSelector(".w3-check[type='radio']"));
+
+        for(WebElement element: checkradio) {
+            Assert.assertFalse(element.isSelected());
+            element.click();
+            Assert.assertTrue(element.isSelected());
+
+        }
+        WebElement checkradio3 = driver.findElement(By.cssSelector(".w3-check[value='Option 3'][type='radio']"));
+        checkradio3.click();
+        Assert.assertTrue(checkradio3.isSelected());
+
+    }
+
+
 
 
     @After
     public void tearDown() throws Exception {
-        Thread.sleep(5000);
+        Thread.sleep(2000);
 
         //Close browser
         driver.quit();
