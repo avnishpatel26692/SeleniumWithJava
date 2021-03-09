@@ -9,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -120,6 +122,28 @@ public class Sample4 {
         WebElement checkradio3 = driver.findElement(By.cssSelector(".w3-check[value='Option 3'][type='radio']"));
         checkradio3.click();
         Assert.assertTrue(checkradio3.isSelected());
+
+    }
+    @Test
+    public void chooseDateViaCalendar(){
+        Calendar cal = Calendar.getInstance(); // get today date
+        cal.add(Calendar.MONTH, -10);
+        String result = new SimpleDateFormat("MM/15/yyyy").format(cal.getTime()); // go back 10 month
+
+        WebElement getText = driver.findElement(By.id("vfb-8"));
+        Assert.assertEquals("",getText.getAttribute("value"));
+        getText.click();
+
+        for (int i = 0; i<10; i++){
+            WebElement getText2 = driver.findElement(By.xpath("//span[text()='Prev']"));
+            getText2.click();
+        }
+        driver.findElement(By.xpath("//a[text()='15']")).click();
+        Assert.assertEquals(result,getText.getAttribute("value"));
+    }
+
+    @Test
+    public void chooseDateViaTextBox() {
 
     }
 
