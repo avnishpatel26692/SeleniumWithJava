@@ -69,7 +69,7 @@ public class Sample8 {
         System.out.println(obj.getFirstSelectedOption().getText());
 
         //To Print All values of Dropdown
-        for(int i = 0; i<obj.getOptions().size(); i++) {
+        for (int i = 0; i < obj.getOptions().size(); i++) {
             System.out.println(obj.getOptions().get(i).getText());
         }
 
@@ -79,8 +79,7 @@ public class Sample8 {
     }
 
     @Test
-    public void radioButtonOperations()
-    {
+    public void radioButtonOperations() {
         WebElement radioBtn1 = driver.findElement(By.cssSelector("input[value='Option 1'][id='vfb-7-1']"));
         WebElement radioBtn2 = driver.findElement(By.cssSelector("input[value='Option 2'][id='vfb-7-2']"));
         WebElement radioBtn3 = driver.findElement(By.cssSelector("input[value='Option 3'][id='vfb-7-3']"));
@@ -94,14 +93,15 @@ public class Sample8 {
         System.out.println("After clicking on checkbox 2, checkbox1 is : " + radioBtn1.isSelected());
 
     }
-//selectCheckBox -
-// create a “for” loop for element with selector “.w3-check[type='checkbox']”,
-// within loop check that checkbox is not selected,
-// then click on it and check that it is selected,
-// then click again
-//Then via getElements check that “option 3” is not selected,
-// then click on it and check then element
-// with css “".w3-check[value='Option 3'][type='checkbox']“” is selected
+
+    //selectCheckBox -
+    // create a “for” loop for element with selector “.w3-check[type='checkbox']”,
+    // within loop check that checkbox is not selected,
+    // then click on it and check that it is selected,
+    // then click again
+    //Then via getElements check that “option 3” is not selected,
+    // then click on it and check then element
+    // with css “".w3-check[value='Option 3'][type='checkbox']“” is selected
     @Test
     public void selectCheckBox() {
         List<WebElement> checkboxes = driver.findElements(By.cssSelector(".w3-check[type='checkbox']"));
@@ -119,14 +119,15 @@ public class Sample8 {
         checkbox3.click();
         Assert.assertTrue(checkbox3.isSelected());
     }
-//selectRadioButton -
-//create a “for” loop for element with selector “.w3-check[type=‘radio']”,
-// within loop check that checkbox is not selected,
-// then click on it and check that it is selected,
-// then click again
-//Then via getElements check that “option 2” is not selected,
-// then click on it and check then element with
-// css “".w3-check[value='Option 2'][type=‘radio']“” is selected
+
+    //selectRadioButton -
+    //create a “for” loop for element with selector “.w3-check[type=‘radio']”,
+    // within loop check that checkbox is not selected,
+    // then click on it and check that it is selected,
+    // then click again
+    //Then via getElements check that “option 2” is not selected,
+    // then click on it and check then element with
+    // css “".w3-check[value='Option 2'][type=‘radio']“” is selected
     @Test
     public void selectRadioButton() {
         List<WebElement> radioButtons = driver.findElements(By.cssSelector(".w3-check[type='radio']"));
@@ -156,11 +157,10 @@ public class Sample8 {
         System.out.println("Expected date" + result);
 
         WebElement calendarTextbox = driver.findElement(By.cssSelector("input#vfb-8"));
-        Assert.assertEquals("",calendarTextbox.getAttribute("value"));
+        Assert.assertEquals("", calendarTextbox.getAttribute("value"));
         calendarTextbox.click();
 
-        for(int i=0; i<10; i++)
-        {
+        for (int i = 0; i < 10; i++) {
             Thread.sleep(500);
             WebElement previousMonthBtn = driver.findElement(By.xpath("//span[text()='Prev']"));
             previousMonthBtn.click();
@@ -170,11 +170,12 @@ public class Sample8 {
         System.out.println("Actual value : " + calendarTextbox.getAttribute("value"));
         Assert.assertEquals(result, calendarTextbox.getAttribute("value"));
     }
-//selectOptionByText -
-// check text of selected item of Select (with id “vfb-12”)
-// via “getFirstSelectedOption()”,
-// select by text “Option 2”,
-// check the selected item text is “Option 2”
+
+    //selectOptionByText -
+    // check text of selected item of Select (with id “vfb-12”)
+    // via “getFirstSelectedOption()”,
+    // select by text “Option 2”,
+    // check the selected item text is “Option 2”
     @Test
     public void selectOptionByText() {
         WebElement dropdown = driver.findElement(By.xpath("//select[@name='vfb-12']"));
@@ -184,7 +185,7 @@ public class Sample8 {
         System.out.println(obj.getFirstSelectedOption().getText());
     }
 
-  // selectOptionByIndex -
+    // selectOptionByIndex -
     // check text of selected item of Select (with id “vfb-12”)
     // via “getFirstSelectedOption()”,
     // select by index 1,
@@ -211,4 +212,25 @@ public class Sample8 {
         obj.selectByValue("value3");
         System.out.println(obj.getFirstSelectedOption().getText());
     }
+
+
+    //chooseDateViaTextBox
+    // find element by id “vfb-8”,
+    // check its value, clear the element,
+    // send keys as string "12/15/2014“,
+    // check value of element against previously sent string.
+    @Test
+    public void chooseDataViaTextBox() {
+        Calendar cal = Calendar.getInstance();
+        cal.add(2, -10);
+        String result = (new SimpleDateFormat("MM/15/yyyy")).format(cal.getTime());
+        WebElement dataTextBox = driver.findElement(By.cssSelector("input#vfb-8"));
+        Assert.assertEquals("", dataTextBox.getAttribute("value"));
+        dataTextBox.clear();
+        dataTextBox.sendKeys(new CharSequence[]{"12/15/2014"});
+        Assert.assertEquals("12/15/2014", dataTextBox.getAttribute("value"));
+
+    }
+
+
 }
