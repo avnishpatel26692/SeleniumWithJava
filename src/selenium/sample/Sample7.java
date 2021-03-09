@@ -30,7 +30,7 @@ public class Sample7 {
     public void validateCSSStyle() {
 
         WebElement para7 = driver.findElement(By.cssSelector("p.lucky"));
-//font size
+        //font size
         System.out.println(para7.getCssValue("font-size"));
         Assert.assertEquals("15px",para7.getCssValue("font-size"));
         //font family
