@@ -57,14 +57,17 @@ public class Sample8 {
         //Select By visible Text
         obj.selectByVisibleText("Option 1");
         System.out.println(obj.getFirstSelectedOption().getText());
+        Assert.assertEquals("Option 1", obj.getFirstSelectedOption().getText());
 
         //Select By Value
         obj.selectByValue("value2");
         System.out.println(obj.getFirstSelectedOption().getText());
+        Assert.assertEquals("Option 2", obj.getFirstSelectedOption().getText());
 
         //Select By Index
         obj.selectByIndex(3);
         System.out.println(obj.getFirstSelectedOption().getText());
+        Assert.assertEquals("Option 3", obj.getFirstSelectedOption().getText());
 
         //To Print All values of Dropdown
         for(int i = 0; i<obj.getOptions().size(); i++)
