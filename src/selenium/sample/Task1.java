@@ -62,16 +62,23 @@ public class Task1 {
     // submit and check that correct no error is seen and check that square root is calculated correctly
     @Test
     public void correctSquareRootWithoutRemainder(){
-        WebElement field = driver.findElement(By.id("numb"));
-        double sixtyFour = 64;
-        field.sendKeys("64");
-        WebElement button = driver.findElement(By.className("w3-orange"));
-        button.click();
-        Alert alert = driver.switchTo().alert();
-        String message =alert.getText();
-        Assert.assertEquals("Square root of 64 is 8.00",message);
-        alert.dismiss();
-        System.out.println(Math.sqrt(sixtyFour) + " is in the message" + message);
+//        WebElement field = driver.findElement(By.id("numb"));
+//        double sixtyFour = 64;
+//        field.sendKeys("64");
+//        WebElement button = driver.findElement(By.className("w3-orange"));
+//        button.click();
+//        Alert alert = driver.switchTo().alert();
+//        String message = alert.getText();
+//        Assert.assertEquals("Square root of 64 is 8.00",message);
+//        alert.dismiss();
+//        System.out.println(Math.sqrt(sixtyFour) + " is in the message" + message);
+
+        driver.findElement(By.id("numb")).sendKeys("64");
+        driver.findElement(By.className("w3-orange")).click();
+        Alert alert1 = driver.switchTo().alert();
+        String message1 = alert1.getText();
+        // Square root of 64 is 8.00
+        Assert.assertEquals("Square root of 64 is 8.00", message1);
     }
 
     //4.correctSquareRootWithRemainder
@@ -81,18 +88,25 @@ public class Task1 {
 
     @Test
     public void correctSquareRootWithRemainder(){
-        WebElement field = driver.findElement(By.id("numb"));
-        double sixtyFive = 65;
-        field.sendKeys("65");
-        WebElement button = driver.findElement(By.className("w3-orange"));
-        button.click();
-        Alert alert = driver.switchTo().alert();
-        String message =alert.getText();
-        Assert.assertEquals("Square root of 65 is 8.06",message);
-        alert.dismiss();
-        System.out.println(Math.sqrt(sixtyFive) + " is in the message" + message);
+//        WebElement field = driver.findElement(By.id("numb"));
+//        double sixtyFive = 65;
+//        field.sendKeys("65");
+//        WebElement button = driver.findElement(By.className("w3-orange"));
+//        button.click();
+//        Alert alert = driver.switchTo().alert();
+//        String message =alert.getText();
+//        Assert.assertEquals("Square root of 65 is 8.06",message);
+//        alert.dismiss();
+//        System.out.println(Math.sqrt(sixtyFive) + " is in the message" + message);
 
+        driver.findElement(By.id("numb")).sendKeys("65");
+        driver.findElement(By.className("w3-orange")).click();
+        Alert alert1 = driver.switchTo().alert();
+        String message1 = alert1.getText();
+        // Square root of 65 is 8.06
+        Assert.assertEquals("Square root of 65 is 8.06", message1);
     }
+
     @After
     public void tearDown() throws Exception {
         Thread.sleep(3000);
