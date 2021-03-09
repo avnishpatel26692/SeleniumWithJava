@@ -31,67 +31,59 @@ public class FormSample {
 
     @Test
     public void errorOnNumberTooSmall() {
-        WebElement insertnum = driver.findElement(By.id("numb"));
-        insertnum.click();
-        insertnum.sendKeys("35");
+        WebElement inputArea = driver.findElement(By.id("numb"));
+        inputArea.click();
+        inputArea.sendKeys("35");
         WebElement orangebtn = driver.findElement(By.className("w3-orange"));
         orangebtn.click();
-        WebElement errormsg = driver.findElement(By.id("ch1_error"));
-        String actualText = errormsg.getText();
-        Assert.assertEquals("Number is too small", actualText);
+        WebElement error = driver.findElement(By.id("ch1_error"));
+        Assert.assertEquals("Number is too small", error.getText());
+
+    }
+    @Test
+    public void errorOnNumberTooBig()
+    {
+        WebElement inputArea = driver.findElement(By.id("numb"));
+        inputArea.click();
+        inputArea.sendKeys("120");
+        WebElement orangebtn = driver.findElement(By.className("w3-orange"));
+        orangebtn.click();
+        WebElement error = driver.findElement(By.id("ch1_error"));
+        Assert.assertEquals("Number is too big", error.getText());
+
+    }
+
+@Test
+    public void correctSquareRootWithoutRemainder()
+    {
+        WebElement inputArea = driver.findElement(By.id("numb"));
+        inputArea.click();
+        inputArea.sendKeys("81");
+        WebElement orangebtn = driver.findElement(By.className("w3-orange"));
+        orangebtn.click();
+        Alert alert = driver.switchTo().alert();
+        String message = alert.getText();
+        Assert.assertEquals("Square root of 81 is 9.00", message);
+        alert.dismiss();
+
+    }
+
+    @Test
+    public void correctSquareRootWithRemainder()
+    {
+        WebElement inputArea = driver.findElement(By.id("numb"));
+        inputArea.click();
+        inputArea.sendKeys("60");
+        WebElement orangebtn = driver.findElement(By.className("w3-orange"));
+        orangebtn.click();
+        Alert alert = driver.switchTo().alert();
+        String message = alert.getText();
+        Assert.assertEquals("Square root of 60 is 7.75", message);
+        alert.dismiss();
+
+    }
 
 
-        /*}
-        @Test
-        public void alertOnClickingButton()
-        {
-            WebElement redBtn = driver.findElement(By.className("w3-red"));
-            redBtn.click();
-            Alert alert = driver.switchTo().alert();
-            String message = alert.getText();
-            Assert.assertEquals("I am an alert box!", message);
-            alert.dismiss();
-            WebElement text = driver.findElement(By.id("textForAlerts"));
-            Assert.assertTrue(text.getText().isEmpty());
-        }
-        @Test
-        public void popUpConfirm()
-        {
-            WebElement greenBtn = driver.findElement(By.className("w3-teal"));
-            greenBtn.click();
-            Alert alert = driver.switchTo().alert();
-            String message = alert.getText();
-            Assert.assertEquals("Press a button!", message);
-            alert.accept();
-            WebElement text = driver.findElement(By.id("textForAlerts"));
-            Assert.assertEquals("Why on earth have you agreed to it?!", text.getText());
-        }@Test
-        public void popUpDenied()
-        {
-            WebElement greenBtn = driver.findElement(By.className("w3-teal"));
-            greenBtn.click();
-            Alert alert = driver.switchTo().alert();
-            String message = alert.getText();
-            Assert.assertEquals("Press a button!", message);
-            alert.dismiss();
-            WebElement text = driver.findElement(By.id("textForAlerts"));
-            Assert.assertEquals("You have dared to deny me!!!", text.getText());
-        }
-        @Test
-        public void popUpEnterNumber()
-        {
-            WebElement yellowBtn = driver.findElement(By.className("w3-khaki"));
-            yellowBtn.click();
-            Alert alert = driver.switchTo().alert();
-            String message = alert.getText();
-            Assert.assertEquals("Please enter a number", message);
-            alert.sendKeys("26");
-            alert.accept();
-            WebElement text = driver.findElement(By.id("textForAlerts"));
-            Assert.assertTrue(text.getText().contains("instead of 26"));
-        }
-
-*/
 
         @After
         public void tearDown () throws Exception {
@@ -101,4 +93,3 @@ public class FormSample {
             driver.quit();
         }
     }
-}
