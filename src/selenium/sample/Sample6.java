@@ -48,6 +48,7 @@ public class Sample6 {
 
         System.out.println("1: "+driver.findElement(By.xpath("//div[@id='nonStandartText']/*[contains(@class,'text amazing')]")).getText());
         System.out.println("2: "+driver.findElement(By.xpath("//p[@class='text' and @id='dummy']")).getText());
+        //also can write : By.xpath("//p[@class='text'][@id='dummy']")
 
     }
     @Test
