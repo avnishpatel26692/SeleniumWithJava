@@ -11,6 +11,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import java.util.concurrent.TimeUnit;
@@ -41,8 +43,7 @@ public class Sample8 {
         checkbox1.click();
         System.out.println(checkbox1.isSelected());
         System.out.println("Before clicking on checkbox 2: " + checkbox2.isSelected());
-        System.out.println(checkbox2.isSelected());
-        System.out.println(checkbox3.isSelected());
+
 
         checkbox2.click();
         System.out.println("After click on checkbox 2: " + checkbox2.isSelected());
@@ -57,7 +58,7 @@ public class Sample8 {
     public void dropDownOperations() {
         WebElement dropdown = driver.findElement(By.xpath("//select[@name='vfb-12']"));
         Select obj = new Select(dropdown);
-//        System.out.println(obj.getFirstSelectedOption().getText());
+        System.out.println(obj.getFirstSelectedOption().getText());
 
         //select by visible text
         obj.selectByVisibleText("Option 1");
@@ -73,8 +74,8 @@ public class Sample8 {
         for(int i=0; i<obj.getOptions().size(); i++) {
         System.out.println(obj.getOptions().get(1).getText()); }
 
-        obj.deselectByValue("Option 1");
-        System.out.println(obj.getFirstSelectedOption().getText());
+//        obj.deselectByValue("Option 1");
+//        System.out.println(obj.getFirstSelectedOption().getText());
 
 
     }
@@ -91,7 +92,7 @@ public class Sample8 {
 
         radio2.click();
         System.out.println("After clicking on checkbox2 " + radio2.isSelected());
-        System.out.println("After clicking on checkbox2, checkbo1 is " + radio1.isSelected());
+        System.out.println("After clicking on checkbox2, checkbox1 is " + radio1.isSelected());
 
 
     }
@@ -137,6 +138,65 @@ public class Sample8 {
         radio9.click();
         Assert.assertFalse(radio0.isSelected());
         Assert.assertTrue(radio9.isSelected());
+
+    }
+
+    @Test
+    public void chooseDateViaCalendar() throws Exception {
+
+        Calendar cal = Calendar.getInstance();  //    get today date
+        cal.add(Calendar.MONTH, -10); // Select Month -10 (Current is March,2021 It will select May,2020)
+        String result = new SimpleDateFormat("MM/15/yyyy").format(cal.getTime());// 05/15/2020
+        System.out.println("Expected Result" +result);
+
+        WebElement calendarTextbox = driver.findElement(By.cssSelector("input#vfb-8"));
+        Assert.assertEquals("",calendarTextbox.getAttribute("value"));
+        calendarTextbox.click();
+
+
+        for(int i=0; i<10; i++)
+        {
+            Thread.sleep(500);
+            WebElement previousMonthBtn = driver.findElement(By.xpath("//span[text()='Prev']"));
+            previousMonthBtn.click();
+        }
+
+        driver.findElement(By.xpath("//a[text()='15']")).click();
+        System.out.println("Actual value : " + calendarTextbox.getAttribute("value"));
+        Assert.assertEquals(result, calendarTextbox.isSelected());
+
+
+    }
+
+
+    @Test
+    public void selectOptionByText() {
+
+        WebElement chooseByText = driver.findElement(By.cssSelector("select#vfb-12"));
+        Select selector = new Select(chooseByText);
+        System.out.println(selector.getFirstSelectedOption().getText());
+        selector.selectByVisibleText("Option 2");
+        System.out.println(selector.getFirstSelectedOption().getText());
+
+    }
+    @Test
+    public void selectOptionByIndex() {
+
+
+        Select selector = new Select(driver.findElement(By.cssSelector("select#vfb-12")));
+        selector.selectByIndex(1);
+        System.out.println(selector.getFirstSelectedOption().getText());
+
+
+    }
+
+    @Test
+    public void selectOptionByValue() {
+
+        WebElement chooseByIndex = driver.findElement(By.cssSelector("select#vfb-12"));
+        Select selector = new Select(chooseByIndex);
+        selector.selectByValue("value3");
+        System.out.println(selector.getFirstSelectedOption().getText());
 
     }
 
