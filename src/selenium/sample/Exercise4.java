@@ -27,6 +27,47 @@ public class Exercise4 {
         driver.manage().window().maximize();
     }
 
+    /*clickLink - check current url, click on link with cssSelector “a[title='Link 1']”,
+    check element with tagName “h1” text and current url*/
+    @Test
+    public void clickLink() {
+        WebElement link = driver.findElement(By.cssSelector("a[title='Link 1']"));
+        link.click();
+        String expectedText = "Link Page 1";
+        String expectedCurrentURL = "https://kristinek.github.io/site/examples/link1";
+        WebElement h1Tag = driver.findElement(By.tagName("h1"));
+
+
+        String actualH1Text = h1Tag.getText();
+        Assert.assertEquals(expectedText, actualH1Text);
+
+        String currentURL = driver.getCurrentUrl();
+        Assert.assertEquals(expectedCurrentURL, currentURL);
+    }
+
+    @Test
+    public void clickButtonAndSeeOrHideText()
+    {
+
+        WebElement showButton = driver.findElement(By.id("show_text"));
+        WebElement textAppear = driver.findElement(By.id("show_me"));
+        WebElement hideButton = driver.findElement(By.name("hide_text"));
+
+        Assert.assertFalse(textAppear.isDisplayed());
+        Assert.assertTrue(showButton.isEnabled());
+        Assert.assertFalse(hideButton.isEnabled());
+
+        showButton.click();
+        Assert.assertTrue(textAppear.isDisplayed());
+        Assert.assertFalse(showButton.isEnabled());
+        Assert.assertTrue(hideButton.isEnabled());
+
+        hideButton.click();
+        Assert.assertFalse(textAppear.isDisplayed());
+        Assert.assertTrue(showButton.isEnabled());
+        Assert.assertFalse(hideButton.isEnabled());
+
+    }
 
     @Test
     public void enterTextInTextArea(){
@@ -81,47 +122,6 @@ public class Exercise4 {
         Assert.assertEquals(newTextToBeEntered, value);
 
     }
-
-
-    @Test
-
-    public void clickLink() {
-        WebElement link = driver.findElement(By.cssSelector("a[title='Link 1']"));
-        link.click();
-        String expectedText = "Link Page 1";
-        String expectedCurrentURL = "https://kristinek.github.io/site/examples/link1";
-        WebElement h1Tag = driver.findElement(By.tagName("h1"));
-
-
-        String actualH1Text = h1Tag.getText();
-        Assert.assertEquals(expectedText, actualH1Text);
-
-        String currentURL = driver.getCurrentUrl();
-        Assert.assertEquals(expectedCurrentURL, currentURL);
-    }
-        @Test
-        public void clickButtonAndSeeOrHideText()
-        {
-
-            WebElement showButton = driver.findElement(By.id("show_text"));
-            WebElement textAppear = driver.findElement(By.id("show_me"));
-            WebElement hideButton = driver.findElement(By.name("hide_text"));
-
-            Assert.assertFalse(textAppear.isDisplayed());
-            Assert.assertTrue(showButton.isEnabled());
-            Assert.assertFalse(hideButton.isEnabled());
-
-            showButton.click();
-            Assert.assertTrue(textAppear.isDisplayed());
-            Assert.assertFalse(showButton.isEnabled());
-            Assert.assertTrue(hideButton.isEnabled());
-
-            hideButton.click();
-            Assert.assertFalse(textAppear.isDisplayed());
-            Assert.assertTrue(showButton.isEnabled());
-            Assert.assertFalse(hideButton.isEnabled());
-
-        }
 
 
         @Test
