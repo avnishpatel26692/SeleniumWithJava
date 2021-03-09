@@ -38,7 +38,7 @@ import java.util.concurrent.TimeUnit;
 
         @Test
         public void assertTrueExample()  {
-            String expectedValue = "This is a button1";
+            String expectedValue = "This is a button";
             WebElement btn = driver.findElement(By.name("randomButton1"));
             String actualValue = btn.getAttribute("value");
             Assert.assertTrue(actualValue.contains(expectedValue));
@@ -55,7 +55,7 @@ import java.util.concurrent.TimeUnit;
         }
 
 
-        @Test
+       @Test
         public void fail() {
                 //write any logic or condition, if not satisfied then you can fail the test
             Assert.fail();
