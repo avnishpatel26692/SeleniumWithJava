@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.server.handler.SendKeys;
 import org.openqa.selenium.support.ui.Select;
 
 import java.text.SimpleDateFormat;
@@ -143,7 +144,6 @@ public class Sample8 {
         Assert.assertEquals("",calendarTextbox.getAttribute("value"));
         calendarTextbox.click();
 
-
         for(int i=0; i<10; i++)
         {
             Thread.sleep(500);
@@ -199,6 +199,23 @@ public class Sample8 {
         System.out.println(obj.getFirstSelectedOption().getText());
 
     }
+
+    //chooseDateViaTextBox - find element by id “vfb-8”, check its value, clear the element,
+    // send keys as string "12/15/2014“, check value of element against previously sent string.
+    @Test
+    public void chooseDateViaTextBox(){
+
+        WebElement dropdown = driver.findElement(By.cssSelector("#vfb-8"));
+        WebElement calendarTextbox = driver.findElement(By.cssSelector("input#vfb-8"));
+        Assert.assertEquals("",calendarTextbox.getAttribute("value"));
+        calendarTextbox.clear();
+        driver.findElement(By.id("vfb-8")).sendKeys("12/15/2014");
+        //calendarTextbox.sendKeys("12/15/2014");
+        System.out.println("Actual value : " + calendarTextbox.getAttribute("value"));
+        Assert.assertEquals("12/15/2014", calendarTextbox.getAttribute("value"));
+
+    }
+
 
     @After
     public void tearDown() throws Exception {
