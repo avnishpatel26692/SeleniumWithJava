@@ -144,7 +144,14 @@ public class Sample4 {
 
     @Test
     public void chooseDateViaTextBox() {
-
+        Calendar cal = Calendar.getInstance(); // get today date
+        cal.add(Calendar.MONTH, -10);
+        String result = new SimpleDateFormat("MM/15/yyyy").format(cal.getTime()); // go back 10 month
+        WebElement getElem = driver.findElement(By.id("vfb-8"));
+        Assert.assertEquals("",getElem.getAttribute("value"));
+        getElem.clear();
+        getElem.sendKeys("12/15/2014");
+        Assert.assertEquals("12/15/2014",getElem.getAttribute("value"));
     }
 
 
