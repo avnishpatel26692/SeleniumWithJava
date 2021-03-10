@@ -31,10 +31,10 @@ public class ProvideFeedbackPage {
         @FindBy(how = How.XPATH, using = "//button[text()='Send']")
         private WebElement sendBtn;
 
-        @FindBy(how = How.XPATH, using = "//button[@class='w3-btn w3-green w3-xlarge']")
+        @FindBy(how = How.XPATH, using = "//button[text()='Yes']")
         private WebElement yesBtn;
 
-        @FindBy(how = How.XPATH, using = "//button[@class='w3-btn w3-red w3-xlarge']")
+        @FindBy(how = How.XPATH, using = "//button[text()='No']")
         private WebElement noBtn;
 
         @FindBy(how = How.ID, using = "name")
@@ -54,6 +54,9 @@ public class ProvideFeedbackPage {
 
         @FindBy(how = How.ID, using = "comment")
         private WebElement sentComment;
+
+        @FindBy(how = How.XPATH, using = "//textarea[@name]")
+        private WebElement checkComment;
 
         @FindBy(how = How.ID, using = "message")
         private WebElement sentCommentFinal;
@@ -121,6 +124,7 @@ public class ProvideFeedbackPage {
         {
             commentText.sendKeys(comment);
         }
+
 
         public void clickOnSendBtn()
         {
@@ -205,6 +209,10 @@ public class ProvideFeedbackPage {
         {
             return colorFinal.getCssValue("color");
 
+        }
+        public String checkComment()
+        {
+            return checkComment.getText();
         }
 
 

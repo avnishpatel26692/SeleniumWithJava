@@ -127,18 +127,38 @@ public class CheckFeedbackPage {
     public void yesOnWithoutNameFeedbackPage() throws Exception {
 //         TODO:
 //         click "Send" (without entering anything
+            giveFeedBackPO.clickOnSendBtn();
 //         click "Yes"
+            giveFeedBackPO.clickYes();
 //         check message text: "Thank you for your feedback!"
+            Assert.assertEquals("Thank you for your feedback!",giveFeedBackPO.getSentCommentFinal());
 //         color of text is white with green on the background
+            Assert.assertEquals("rgba(255, 255, 255, 1)",giveFeedBackPO.getFinalTextColor());
+            Assert.assertEquals("rgba(76, 175, 80, 1)",giveFeedBackPO.getFinalColor());
     }
 
     @Test
     public void noOnFeedbackPage() throws Exception {
 //         TODO:
 //         fill the whole form
+        giveFeedBackPO.enterName("Egils");
+        giveFeedBackPO.enterAge("27");
+        giveFeedBackPO.selectCheckBox(1);
+        giveFeedBackPO.selectRadioBtn(0);
+        giveFeedBackPO.selectValueFromDropDown(1);
+        giveFeedBackPO.enterComment("Thank you!");
 //         click "Send"
+        giveFeedBackPO.clickOnSendBtn();
 //         click "No"
+        giveFeedBackPO.clickNo();
 //         check fields are filled correctly
+        Assert.assertEquals("Egils",giveFeedBackPO.getName());
+        Assert.assertEquals("27",giveFeedBackPO.getAge());
+        Assert.assertTrue(giveFeedBackPO.verifyCheckBoxIsSelected(1));
+        Assert.assertTrue(giveFeedBackPO.verifyRadioButtonIsSelected(0));
+        Assert.assertEquals("Good", giveFeedBackPO.getSelectedOption());
+        Assert.assertEquals("", giveFeedBackPO.checkComment());
+
     }
     @After
     public void tearDown() throws Exception {
