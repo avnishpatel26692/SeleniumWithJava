@@ -9,8 +9,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import java.util.concurrent.TimeUnit;
+
+
+
 
 
 
@@ -22,7 +24,7 @@ public class Sample3 {
     @Before
     public void initBrowser() {
         System.setProperty("webdriver.chrome.driver", libWithDriversLocation + "chromedriver");
-        driver = new ChromeDriver();
+        WebDriver driver = new ChromeDriver();
 
         //open test homepage
         driver.get("https://kristinek.github.io/site/examples/locators");
@@ -32,6 +34,9 @@ public class Sample3 {
 
     @Test
     public void assertEqualsExamples() throws Exception {
+
+        //where you compare text “Heading 1“ with text from element with id “heading_1” via “assertEquals”
+
         WebElement heading1 = driver.findElement(By.id("heading_1"));
         String actualValue = heading1.getText();
         String expectValue = "Heading 1";
@@ -40,6 +45,9 @@ public class Sample3 {
 
     @Test
     public void assertTrueExamples() {
+
+        //assertTrue with “String.equals()”, “String.contains()”, “String. equalsIgnoreCase()”
+
         String expectValue = "This is a button";
         WebElement btn = driver.findElement(By.name("randomButton1"));
         String actualValue = btn.getAttribute("value");
@@ -49,6 +57,9 @@ public class Sample3 {
 
     @Test
     public void assertFalseExamples() {
+
+        //assertFalse with “!String.equals()”, “String.equals(“not”)”, “String. contains(“not”)”
+
         String expectValue = "This is a button 2";
         WebElement btn = driver.findElement(By.name("randomButton2"));
         String actualValue = btn.getAttribute("value");
@@ -58,6 +69,8 @@ public class Sample3 {
 
     @Test
     public void fail() {
+
+        //see how fail() works
         Assert.fail();
     }
 
