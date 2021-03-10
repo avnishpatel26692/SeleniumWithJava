@@ -23,6 +23,12 @@ public class FeedbackCheckPage {
     @FindBy(how = How.XPATH, using = "//button[contains(text(),'No')]")
     private WebElement buttonNo;
 
+    @FindBy(how = How.XPATH, using = "//h2[@id='message']")
+    private WebElement finalMessage;
+
+    @FindBy(how = How.XPATH, using = "//div[@class='w3-panel w3-green']")
+    private WebElement finalMessageStyling;
+
     public String getNameField(){
         return nameField.getText();
     }
@@ -58,5 +64,24 @@ public class FeedbackCheckPage {
         return buttonNo.getCssValue("color");
     }
 
+
+    public void clickYes() {
+        buttonYes.click();
+    }
+    public void clickNo() {
+        buttonNo.click();
+    }
+
+    public String getFinalMessage(){
+        return finalMessage.getText();
+
+    }
+
+    public String getFinalTextBgColor(){
+        return finalMessageStyling.getCssValue("background-color");
+    }
+    public String getFinalTextColor(){
+        return finalMessageStyling.getCssValue("color");
+    }
 
 }

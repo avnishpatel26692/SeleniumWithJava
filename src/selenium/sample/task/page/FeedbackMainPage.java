@@ -20,9 +20,9 @@ public class FeedbackMainPage {
     @FindBy(how = How.XPATH, using = "//input[@value='Chinese']")
     private WebElement checkboxChinese;
 
-    @FindBy(how = How.XPATH, using = "//input[@value='male']")
+    @FindBy(how = How.XPATH, using = "//input[@class='w3-radio'][@value='male']")
     private WebElement radioBtnMale;
-    @FindBy(how = How.XPATH, using = "//input[@value='female']")
+    @FindBy(how = How.XPATH, using = "//input[@class='w3-radio'][@value='female']")
     private WebElement radioBtnFemale;
     @FindBy(how = How.XPATH, using = "//input[@name='gender'][@disabled]")
     private WebElement radioBtnDisabled;
@@ -69,12 +69,16 @@ public class FeedbackMainPage {
         switch (language) {
             case "English":
                 checkboxEnglish.click();
+                break;
             case "French":
                 checkboxFrench.click();
+                break;
             case "Spanish":
                 checkboxSpanish.click();
+                break;
             case "Chinese":
                 checkboxChinese.click();
+                break;
         }
     }
     public boolean verifyIsSelected(String language) {
@@ -95,10 +99,13 @@ public class FeedbackMainPage {
         switch (number){
             case 0:
                 radioBtnMale.click();
+                break;
             case 1:
                 radioBtnFemale.click();
+                break;
             case 2:
                 radioBtnDisabled.click();
+                break;
 
         }
     }
@@ -140,4 +147,7 @@ public class FeedbackMainPage {
         return submitButton.getCssValue("color");
     }
 
+    public String getCommentText() {
+        return commentBox.getAttribute("value");
+    }
 }
