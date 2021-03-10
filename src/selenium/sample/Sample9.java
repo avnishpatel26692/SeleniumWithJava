@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -62,6 +63,18 @@ public class Sample9 {
         WebDriverWait wait = new WebDriverWait(driver, 15);
         wait.until(ExpectedConditions.attributeContains(By.xpath("//p"), "style", "color: rgb(119, 119, 119)"));
         Assert.assertEquals("What is this magic? It's dev magic~",driver.findElement(By.xpath("//p")).getText());
+    }
+    //1) click on start loading green button
+    //2) check that button does not appear
+    //3) wait until text found "Green Loaded"
+    @Test
+    public void checkTheGreenButton(){
+        driver.get("https://kristinek.github.io/site/examples/loading_color");
+        WebElement button = driver.findElement(By.id("start_green"));
+        button.click();
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        Assert.assertFalse(button.isDisplayed());
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[@id = 'finish_green']")));
     }
 
 }
