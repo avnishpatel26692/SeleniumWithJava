@@ -1,6 +1,7 @@
 package selenium.sample.test;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -48,5 +49,13 @@ public class Sample11 {
         agePO.enterName("John");
         agePO.clickSubmit();
         System.out.println(agePO.getErrorMessage());
+    }
+    @Test
+    public void scenario3() {
+        agePO.enterName("John");
+        agePO.enterAge("5");
+        agePO.clickSubmit();
+        System.out.println(ageSubmitPO.getMessage());
+        Assert.assertEquals("Hello, John, you are a kid", ageSubmitPO.getMessage());
     }
 }
