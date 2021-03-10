@@ -25,9 +25,8 @@ public class Sample10_Loading {
     {
         driver.findElement(By.id("start_green")).click();
         WebDriverWait wait = new WebDriverWait(driver, 15);
-        String check1;
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h2[@id='finish_green']")));
-                 check1 = driver.findElement(By.xpath("//h2[@id='finish_green']")).getText();
+        String check1 = driver.findElement(By.xpath("//h2[@id='finish_green']")).getText();
         Assert.assertEquals("Green Loaded", check1);
     }
 
