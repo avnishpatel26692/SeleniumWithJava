@@ -1,4 +1,4 @@
-package selenium.task;
+package selenium.page;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -20,7 +20,6 @@ public class Task2 {
     @Before
     public void initBrowser() {
         System.setProperty("webdriver.chrome.driver", libWithDriversLocation + "chromedriver89.exe");
-        driver = new ChromeDriver();
         driver = new ChromeDriver();
         feedPO = PageFactory.initElements(driver, selenium.page.ProvideFeedback.class);
         checkPO = PageFactory.initElements(driver, selenium.page.CheckFeedback.class);
@@ -61,12 +60,12 @@ public class Task2 {
 //         click "Send" without entering any data
         feedPO.clickOnSendBtn();
 //         check fields are empty or null
-        Assert.assertEquals(null, checkPO.getSpanName());
-        Assert.assertEquals(null, checkPO.getSpanAge());
-        Assert.assertEquals(null, checkPO.getSpanLanguage());
-        Assert.assertEquals(null, checkPO.getSpanGender());
-        Assert.assertEquals(null, checkPO.getSpanOption());
-        Assert.assertEquals(null, checkPO.getSpanComment());
+        Assert.assertEquals("", checkPO.getSpanName());
+        Assert.assertEquals("", checkPO.getSpanAge());
+        Assert.assertEquals("", checkPO.getSpanLanguage());
+        Assert.assertEquals("null", checkPO.getSpanGender());
+        Assert.assertEquals("null", checkPO.getSpanOption());
+        Assert.assertEquals("", checkPO.getSpanComment());
 //         check button colors
 //         (green with white letter and red with white letters)
         Assert.assertEquals("rgba(76, 175, 80, 1)", checkPO.getYesButtonBackGroundColor());
@@ -74,11 +73,9 @@ public class Task2 {
         Assert.assertEquals("rgba(255, 255, 255, 1)", checkPO.getYesButtonTextColor());
         Assert.assertEquals("rgba(255, 255, 255, 1)", checkPO.getNoButtonTextColor());
     }
-}
 
-/*    @Test
+    @Test
     public void notEmptyFeedbackPage() throws Exception {
-//         TODO:
 //         fill the whole form, click "Send"
         feedPO.enterName(new String("Vasya"));
         feedPO.enterAge(new String("33"));
@@ -89,45 +86,74 @@ public class Task2 {
         feedPO.enterComment(new String("You are the best!"));
         feedPO.clickOnSendBtn();
 //         check fields are filled correctly
-        Assert.assertEquals("Vasya",checkPO.getSpanName());
-        Assert.assertEquals("33",checkPO.getSpanAge());
-        Assert.assertEquals(0,checkPO.getSpanLanguage());
-        /*Assert.assertEquals(null,checkPO.getSpanGender());
-        Assert.assertEquals(null,checkPO.getSpanOption());
-        Assert.assertEquals(null,checkPO.getSpanComment());*/
-
-
+        Assert.assertEquals("Vasya", checkPO.getSpanName());
+        Assert.assertEquals("33", checkPO.getSpanAge());
+        Assert.assertEquals("English,French", checkPO.getSpanLanguage());
+        Assert.assertEquals("male", checkPO.getSpanGender());
+        Assert.assertEquals("Ok, i guess", checkPO.getSpanOption());
+        Assert.assertEquals("You are the best!", checkPO.getSpanComment());
 //         check button colors
 //         (green with white letter and red with white letters)
+        Assert.assertEquals("rgba(76, 175, 80, 1)", checkPO.getYesButtonBackGroundColor());
+        Assert.assertEquals("rgba(244, 67, 54, 1)", checkPO.getNoButtonBackGroundColor());
+        Assert.assertEquals("rgba(255, 255, 255, 1)", checkPO.getYesButtonTextColor());
+        Assert.assertEquals("rgba(255, 255, 255, 1)", checkPO.getNoButtonTextColor());
+    }
 
-
-
-/*    @Test
+    @Test
     public void yesOnWithNameFeedbackPage() throws Exception {
-//         TODO:
 //         enter only name
+        feedPO.enterName(new String("Gloria"));
 //         click "Send"
+        feedPO.clickOnSendBtn();
 //         click "Yes"
+        checkPO.clickOnYesBtn();
 //         check message text: "Thank you, NAME, for your feedback!"
+        Assert.assertEquals("Thank you, Gloria, for your feedback!", checkPO.getMessageText());
 //         color of text is white with green on the background
+        Assert.assertEquals("rgba(76, 175, 80, 1)", checkPO.getMessageBackGroundColor());
+        Assert.assertEquals("rgba(255, 255, 255, 1)", checkPO.getMessageTextColor());
     }
 
     @Test
     public void yesOnWithoutNameFeedbackPage() throws Exception {
-//         TODO:
+
 //         click "Send" (without entering anything
+        feedPO.clickOnSendBtn();
 //         click "Yes"
+        checkPO.clickOnYesBtn();
 //         check message text: "Thank you for your feedback!"
+        Assert.assertEquals("Thank you for your feedback!", checkPO.getMessageText());
 //         color of text is white with green on the background
+        Assert.assertEquals("rgba(76, 175, 80, 1)", checkPO.getMessageBackGroundColor());
+        Assert.assertEquals("rgba(255, 255, 255, 1)", checkPO.getMessageTextColor());
     }
 
     @Test
     public void noOnFeedbackPage() throws Exception {
-//         TODO:
+
 //         fill the whole form
+        feedPO.enterName(new String("Tanya"));
+        feedPO.enterAge(new String("44"));
+        feedPO.selectCheckBox(0);
+        feedPO.selectCheckBox(2);
+        feedPO.selectRadioBtn(1);
+        feedPO.selectValueFromDropDown(1);
+        feedPO.enterComment(new String("Thank You!"));
 //         click "Send"
+        feedPO.clickOnSendBtn();
 //         click "No"
+        checkPO.clickOnNoBtn();
 //         check fields are filled correctly
+        Assert.assertEquals("Tanya", feedPO.getName());
+        Assert.assertEquals("44", feedPO.getAge());
+        Assert.assertTrue(feedPO.verifyRadioButtonIsSelected(1));
+        Assert.assertTrue(feedPO.verifyCheckBoxIsSelected(0));
+        Assert.assertFalse(feedPO.verifyCheckBoxIsSelected(1));
+        Assert.assertTrue(feedPO.verifyCheckBoxIsSelected(2));
+        Assert.assertFalse(feedPO.verifyCheckBoxIsSelected(3));
+        Assert.assertEquals("Good",feedPO.getSelectedOption());
+        Assert.assertEquals("Thank You!", feedPO.getComment());
     }
 
     @After
@@ -136,4 +162,5 @@ public class Task2 {
 
         //Close browser
         driver.quit();
-  */
+    }
+}

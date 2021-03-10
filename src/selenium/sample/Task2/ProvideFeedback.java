@@ -58,7 +58,7 @@ public class ProvideFeedback {
 
     public String getName()
     {
-        return  nameText.getAttribute("value");
+        return nameText.getAttribute("value");
     }
 
     public void enterAge(String age)
@@ -68,7 +68,7 @@ public class ProvideFeedback {
 
     public String getAge()
     {
-        return  ageText.getAttribute("value");
+        return ageText.getAttribute("value");
     }
 
     public boolean verifyCheckBoxIsSelected(int index)
@@ -110,7 +110,7 @@ public class ProvideFeedback {
 
     public String getComment()
     {
-        return  commentText.getAttribute("value");
+        return commentText.getAttribute("value");
     }
 
     public void clickOnSendBtn()

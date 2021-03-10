@@ -12,10 +12,10 @@ import java.util.List;
 
 public class CheckFeedback {
 
-    @FindBy(how = How.CSS, using = "#name")
+    @FindBy(how = How.ID, using = "name")
     private WebElement spanName;
 
-    @FindBy(how = How.CSS, using = "#age")
+    @FindBy(how = How.ID, using = "age")
     private WebElement spanAge;
 
     @FindBy(how = How.CSS, using = "#language")
@@ -36,36 +36,37 @@ public class CheckFeedback {
     @FindBy(how = How.XPATH, using = "//button[text()='No']")
     private WebElement noBtn;
 
+    @FindBy(how = How.CSS, using = ".w3-green")
+    private WebElement message;
+
     public String getSpanName()
     {
-        return  spanName.getAttribute("value");
+        return  spanName.getText();
     }
 
     public String getSpanAge()
     {
-        return  spanAge.getAttribute("value");
+        return  spanAge.getText();
     }
 
     public String getSpanLanguage()
     {
-        return  spanLanguage.getAttribute("value");
+        return  spanLanguage.getText();
     }
-//    @FindBy(how = How.CSS, using = "#language")
-//    private List<WebElement> checkboxes;
 
     public String getSpanGender()
     {
-        return  spanGender.getAttribute("value");
+        return  spanGender.getText();
     }
 
     public String getSpanOption()
     {
-        return  spanOption.getAttribute("value");
+        return  spanOption.getText();
     }
 
     public String getSpanComment()
     {
-        return  spanComment.getAttribute("value");
+        return  spanComment.getText();
     }
 
     public void clickOnYesBtn()
@@ -96,6 +97,21 @@ public class CheckFeedback {
     public String getNoButtonTextColor()
     {
         return noBtn.getCssValue("color");
+    }
+
+    public String getMessageText()
+    {
+        return  message.getText();
+    }
+
+    public String getMessageBackGroundColor()
+    {
+        return message.getCssValue("background-color");
+    }
+
+    public String getMessageTextColor()
+    {
+        return message.getCssValue("color");
     }
 
 }
