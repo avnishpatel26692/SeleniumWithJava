@@ -39,13 +39,13 @@ public class GiveFeedBackPage {
     private List<WebElement> radioBtns;
 
 
-    @FindBy(how = How.ID, using = "//input [@class ='w3-radio'][1]")
+    @FindBy(how = How.XPATH, using = "//input [@class ='w3-radio'][1]")
     private WebElement maleradioBtn;
 
-    @FindBy(how = How.ID, using = "//input [@class ='w3-radio'][2]")
+    @FindBy(how = How.XPATH, using = "//input [@class ='w3-radio'][2]")
     private WebElement femaleradioBtn;
 
-    @FindBy(how = How.ID, using = "//input [@class ='w3-radio'][3]")
+    @FindBy(how = How.XPATH, using = "//input [@class ='w3-radio'][3]")
     private WebElement dontknowradioBtn;
 
 
