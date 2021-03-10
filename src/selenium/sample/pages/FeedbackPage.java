@@ -29,7 +29,7 @@ public class FeedbackPage {
     @FindBy(how = How.XPATH, using = "//input[@type='radio'][3]")
     private WebElement unknownGenderRadioBtn;
 
-    @FindBy(how = How.XPATH, using = "//label[contains(text(), 'Male') or contains(text(), 'Female') or contains(text(), 'know')]")
+    @FindBy(how = How.XPATH, using = "//label[text()='Male' or text()='Female' or contains(text(), 'know')]")
     private List<WebElement> genderRadioButtonLabels;
 
     @FindBy(how = How.ID, using = "like_us")
