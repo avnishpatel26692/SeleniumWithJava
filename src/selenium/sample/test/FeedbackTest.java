@@ -72,8 +72,9 @@ public class FeedbackTest {
 //         (green with white letter and red with white letters)
         feedbackPO.submit();
 
-        Assert.assertEquals(null, giveFeedbackPO.getName());
-        Assert.assertEquals(null, giveFeedbackPO.getAge());
+        Assert.assertNull(giveFeedbackPO.getName());
+        Assert.assertNull(giveFeedbackPO.getAge());
+        Assert.assertEquals("", giveFeedbackPO.getLanguage());
         Assert.assertEquals("null", giveFeedbackPO.getGender());
         Assert.assertEquals("null", giveFeedbackPO.getOption());
         Assert.assertEquals("", giveFeedbackPO.getComment());
@@ -92,6 +93,25 @@ public class FeedbackTest {
 //         check button colors
 //         (green with white letter and red with white letters)
 
+        feedbackPO.enterName("Anna");
+        feedbackPO.enterAge("26");
+        feedbackPO.selectLanguage(2);
+        feedbackPO.selectFromDropDown(1);
+        feedbackPO.selectFemaleGender();
+        feedbackPO.enterComment("Thank you!");
+        feedbackPO.submit();
+
+        Assert.assertEquals("Anna", giveFeedbackPO.getName());
+        Assert.assertEquals("26", giveFeedbackPO.getAge());
+        Assert.assertEquals("female", giveFeedbackPO.getGender());
+        Assert.assertEquals("Spanish", giveFeedbackPO.getLanguage());
+        Assert.assertEquals("Good", giveFeedbackPO.getOption());
+        Assert.assertEquals("Thank you!", giveFeedbackPO.getComment());
+
+        Assert.assertEquals("rgba(76, 175, 80, 1)", giveFeedbackPO.checkYesBtnBackgroundColor());
+        Assert.assertEquals("rgba(255, 255, 255, 1)", giveFeedbackPO.checkYesBtnLetterColor());
+        Assert.assertEquals("rgba(244, 67, 54, 1)", giveFeedbackPO.checkNoBtnBackgroundColor());
+        Assert.assertEquals("rgba(255, 255, 255, 1)", giveFeedbackPO.checkNoBtnLetterColor());
     }
 
     @Test
@@ -102,7 +122,14 @@ public class FeedbackTest {
 //         click "Yes"
 //         check message text: "Thank you, NAME, for your feedback!"
 //         color of text is white with green on the background
+        feedbackPO.enterName("Anna");
+        feedbackPO.submit();
+        giveFeedbackPO.clickSubmit();
 
+        Assert.assertEquals("Thank you, Anna, for your feedback!", giveFeedbackPO.getMessage());
+
+        Assert.assertEquals("rgba(255, 255, 255, 1)", giveFeedbackPO.getMessageColor());
+        Assert.assertEquals("rgba(76, 175, 80, 1)", giveFeedbackPO.getMessageBoxColor());
     }
 
     @Test
@@ -112,6 +139,12 @@ public class FeedbackTest {
 //         click "Yes"
 //         check message text: "Thank you for your feedback!"
 //         color of text is white with green on the background
+        feedbackPO.submit();
+        giveFeedbackPO.clickSubmit();
+        Assert.assertEquals("Thank you for your feedback!", giveFeedbackPO.getMessage());
+        Assert.assertEquals("rgba(255, 255, 255, 1)", giveFeedbackPO.getMessageColor());
+        Assert.assertEquals("rgba(76, 175, 80, 1)", giveFeedbackPO.getMessageBoxColor());
+
     }
 
     @Test
@@ -121,6 +154,22 @@ public class FeedbackTest {
 //         click "Send"
 //         click "No"
 //         check fields are filled correctly
+        feedbackPO.enterName("Anna");
+        feedbackPO.enterAge("26");
+        feedbackPO.selectLanguage(2);
+        feedbackPO.selectFromDropDown(1);
+        feedbackPO.selectFemaleGender();
+        feedbackPO.enterComment("Thank you!");
+        feedbackPO.submit();
+
+        giveFeedbackPO.clickCancel();
+
+        Assert.assertEquals("Anna", feedbackPO.getName());
+        Assert.assertEquals("26", feedbackPO.getAge());
+        Assert.assertEquals("Spanish", feedbackPO.validateLanguage(2));
+        Assert.assertEquals("female", feedbackPO.validateGender(1));
+        Assert.assertEquals("Good", feedbackPO.getTheSelectedOption());
+        Assert.assertEquals("Thank you!",feedbackPO.getComment());
     }
 }
 

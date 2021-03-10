@@ -31,28 +31,36 @@ public class GiveFeedBackPage {
     @FindBy(how = How.CSS, using = "button.w3-red")
     private WebElement noButton;
 
+    @FindBy(how = How.ID, using = "message")
+    private WebElement message;
+
+    @FindBy(how = How.CSS, using = "div.w3-green")
+    private WebElement messageBox;
+
+
+
     public String getName() {
-        return  nameText.getAttribute("value");
+        return nameText.getText();
     }
 
     public String getAge() {
-        return ageText.getAttribute("value");
+        return ageText.getText();
 
     }
 
-    public String getLanguage(){
+    public String getLanguage() {
         return languageText.getText();
     }
 
-    public String getGender(){
+    public String getGender() {
         return genderText.getText();
     }
 
-    public String getOption(){
+    public String getOption() {
         return dropdownText.getText();
     }
 
-    public String getComment(){
+    public String getComment() {
         return commentText.getText();
     }
 
@@ -72,6 +80,25 @@ public class GiveFeedBackPage {
         return noButton.getCssValue("color");
     }
 
+    public void clickSubmit() {
+        yesButton.click();
+    }
+
+    public void clickCancel() {
+        noButton.click();
+    }
+
+    public String getMessage(){
+        return message.getText();
+    }
+
+    public String getMessageColor(){
+        return message.getCssValue("color");
+    }
+
+    public String getMessageBoxColor(){
+        return messageBox.getCssValue("background-color");
+    }
 
 
 }

@@ -17,20 +17,29 @@ public class FeedbackPage {
     @FindBy(how = How.XPATH, using = "//input[@type='checkbox']")
     private List<WebElement> checkBoxes;
 
-    @FindBy(how = How.XPATH, using = "//input[@value='Male']")
+    @FindBy(how = How.XPATH, using = "//label[@class='w3-validate']")
+    private List<WebElement> checkBoxLabels;
+
+    @FindBy(how = How.XPATH, using = "//input[@value='male']")
     private WebElement maleRadioBtn;
 
-    @FindBy(how = How.XPATH, using = "//input[@value='Female']")
+    @FindBy(how = How.XPATH, using = "//input[@value='female']")
     private WebElement femaleRadioBtn;
 
     @FindBy(how = How.XPATH, using = "//input[@type='radio'][3]")
     private WebElement unknownGenderRadioBtn;
+
+    @FindBy(how = How.XPATH, using = "//h3//label[@class='w3-validate']")
+    private List<WebElement> genderRadioButtonLabels;
 
     @FindBy(how = How.ID, using = "like_us")
     private WebElement dropdown;
 
     @FindBy(how = How.XPATH, using = "//button[@type='submit']")
     private WebElement submitBtn;
+
+    @FindBy(how = How.XPATH, using = "//textarea[@name='comment']")
+    private WebElement commentField;
 
     public void enterName(String name) {
         nameText.sendKeys(name);
@@ -94,6 +103,23 @@ public class FeedbackPage {
     public String getTheSelectedOption(){
         Select dropdownLikeUs  = new Select(dropdown);
         return dropdownLikeUs.getFirstSelectedOption().getText();
+    }
+
+    public void enterComment(String comment){
+        commentField.sendKeys(comment);
+    }
+
+    public String getComment(){
+        //return commentField.getText();
+        return commentField.getAttribute("value");
+    }
+
+    public String validateLanguage(int index) {
+        return checkBoxLabels.get(index).getText();
+    }
+
+    public String validateGender(int index) {
+        return genderRadioButtonLabels.get(index).getText();
     }
 
 }
