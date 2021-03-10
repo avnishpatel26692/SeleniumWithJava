@@ -45,17 +45,13 @@ public class Sample12 {
         Assert.assertFalse(giveFeedbackPO.verifyCheckbox(2));
         Assert.assertFalse(giveFeedbackPO.verifyCheckbox(3));
 
-        //checking radioButtons are not selected
         Assert.assertFalse(giveFeedbackPO.verifyRadioButtonIsSelected(0));
         Assert.assertFalse(giveFeedbackPO.verifyRadioButtonIsSelected(1));
 
-        //checking don't know radioButton is selected as gender
         Assert.assertTrue(giveFeedbackPO.verifyRadioButtonIsSelected(2));
 
-        //Choose your option is selected in "How do you like us?"
         Assert.assertEquals("Choose your option", giveFeedbackPO.getSelectedOption());
 
-        //Check button is Blue in color with White Text
         Assert.assertEquals("rgba(33, 150, 243, 1)", giveFeedbackPO.sendButtonBackgroundColor());
         Assert.assertEquals("rgba(255, 255, 255, 1)", giveFeedbackPO.getSendButtonColor());
     }
