@@ -38,7 +38,7 @@ public class Sample11 {
         agePO.enterName("ABC");
         agePO.enterAge("25");
         agePO.clickOnSubmitBtn();
-        Assert.assertEquals("Hello, ABC, you are an adult",ageSubmitPO.getMessage())
+        Assert.assertEquals("Hello, ABC, you are an adult",ageSubmitPO.getMessage());
         System.out.println(ageSubmitPO.getMessage());
     }
 
