@@ -104,17 +104,23 @@ public class CheckFeedbackPage {
         Assert.assertEquals("rgba(76, 175, 80, 1)", giveFeedBackPO.getYesButtonColor());
         Assert.assertEquals("rgba(244, 67, 54, 1)", giveFeedBackPO.getNoButtonColor());
         Assert.assertEquals("rgba(255, 255, 255, 1)", giveFeedBackPO.getYesButtonTextColor());
-        Assert.assertEquals("rgba(255, 255, 255, 1)", giveFeedBackPO.getNoButtonTextColor())
+        Assert.assertEquals("rgba(255, 255, 255, 1)", giveFeedBackPO.getNoButtonTextColor());
     }
 
     @Test
     public void yesOnWithNameFeedbackPage()  {
 //         TODO:
 //         enter only name
+        giveFeedBackPO.enterName("Egils");
 //         click "Send"
+        giveFeedBackPO.clickOnSendBtn();
 //         click "Yes"
+        giveFeedBackPO.clickYes();
 //         check message text: "Thank you, NAME, for your feedback!"
+        Assert.assertEquals("Thank you, Egils, for your feedback!",giveFeedBackPO.getSentCommentFinal());
 //         color of text is white with green on the background
+        Assert.assertEquals("rgba(255, 255, 255, 1)",giveFeedBackPO.getFinalTextColor());
+        Assert.assertEquals("rgba(76, 175, 80, 1)",giveFeedBackPO.getFinalColor());
     }
 
     @Test

@@ -55,6 +55,14 @@ public class ProvideFeedbackPage {
         @FindBy(how = How.ID, using = "comment")
         private WebElement sentComment;
 
+        @FindBy(how = How.ID, using = "message")
+        private WebElement sentCommentFinal;
+
+        @FindBy(how = How.CLASS_NAME, using = "w3-green")
+        private WebElement colorFinal;
+
+
+
 
 
         public void enterName(String name)
@@ -147,6 +155,13 @@ public class ProvideFeedbackPage {
         public String getNoButtonColor()
         {
             return noBtn.getCssValue("background-color");
+
+        }
+        public void clickYes(){
+            yesBtn.click();
+        }
+        public void clickNo(){
+            noBtn.click();
         }
         public String getSentName()
         {
@@ -174,6 +189,21 @@ public class ProvideFeedbackPage {
         public String getSentComment()
         {
             return sentComment.getText();
+
+        }
+        public String getSentCommentFinal()
+        {
+            return sentCommentFinal.getText();
+
+        }
+        public String getFinalColor()
+        {
+            return colorFinal.getCssValue("background-color");
+
+        }
+        public String getFinalTextColor()
+        {
+            return colorFinal.getCssValue("color");
 
         }
 
