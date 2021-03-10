@@ -38,6 +38,16 @@ public class Sample11 {
         Assert.assertEquals("Hello, Egils, you are an adult",ageSubmitP0.getMessage());
         System.out.println(ageSubmitP0.getMessage());
     }
+    //Enter only name and get error message
+    @Test
+    public void test2(){
+        ageP0.enterName("Egils");
+        ageP0.clickOnSubmitBtn();
+        ageP0.getErrorMessage();
+        Assert.assertEquals("You haven't entered anything in age field",ageP0.getErrorMessage());
+        System.out.println(ageP0.getErrorMessage());
+    }
+
 
 
     @After
