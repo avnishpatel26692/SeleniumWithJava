@@ -91,9 +91,9 @@ public class Task2 {
         Assert.assertEquals("",getFeedBackPO.getComment());
 
         //btns colors
-        Assert.assertEquals(getFeedBackPO.getYesBgColor(),"rgba(76, 175, 80, 1)");
-        Assert.assertEquals(getFeedBackPO.getNoBgColor(),"rgba(244, 67, 54, 1)");
-        Assert.assertEquals(getFeedBackPO.getBtnTextColor(),"rgba(0, 0, 0, 1)");
+        Assert.assertEquals("rgba(76, 175, 80, 1)",getFeedBackPO.getYesBgColor());
+        Assert.assertEquals("rgba(244, 67, 54, 1)",getFeedBackPO.getNoBgColor());
+        Assert.assertEquals("rgba(0, 0, 0, 1)",getFeedBackPO.getBtnTextColor());
 
     }
 
