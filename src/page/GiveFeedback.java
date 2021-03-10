@@ -83,9 +83,10 @@ public class GiveFeedback {
 
     }
 
-    public void selectDisabled(int index) {
+    public void selectRadio(int index) {
         radio.get(index).click();
     }
+
 
     public String getSelectedOption() {
         Select dropdown = new Select(likeUs);
@@ -113,6 +114,9 @@ public class GiveFeedback {
     public String getSendButtonColor() {
         return send.getCssValue("color");
     }
+
+
+
 
 
 
