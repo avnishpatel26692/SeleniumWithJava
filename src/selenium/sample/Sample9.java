@@ -29,7 +29,7 @@ public class Sample9 {
     @Test
     public void threadsleepwait() throws Exception
     {
-        Thread.sleep(15000);
+        Thread.sleep(15000); // Wait for the program for 15 seconds irrespective any condition (Hard Wait)
         driver.findElement(By.xpath("//p[contains(text(),'dev magic')]"));
         Assert.assertEquals("What is this magic? It's dev magic~",driver.findElement(By.xpath("//p")).getText());
     }
@@ -37,6 +37,7 @@ public class Sample9 {
     @Test
     public void implicitWait()
     {
+        //implicit wait is maximum time it will wait for "driver.findElement()" method. if found earlier it continues.
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         driver.findElement(By.xpath("//p[contains(text(),'dev magic')]"));
         Assert.assertEquals("What is this magic? It's dev magic~",driver.findElement(By.xpath("//p")).getText());
