@@ -31,7 +31,10 @@ public class Sample11 {
         driver.manage().window().maximize();
     }
 
-    //enter Name, Age and click on submit btn and validate message
+    //1. enter Name
+    //2. enter Age > 20
+    //3. click on submit button
+    //4. validate success message "Hello, user, you are an adult"
     @Test
     public void scenario1()
     {
@@ -44,14 +47,30 @@ public class Sample11 {
 
 
     //1. enter Name
-    //2. click on submit Btn
+    //2. click on submit Button
     //3. validate the error message "You haven't entered anything in age field"
     @Test
     public void scenario2()
     {
-
+        agePO.enterName("DEF");
+        agePO.clickOnSubmitBtn();
+        System.out.println(agePO.getErrorMessage());
+        Assert.assertEquals("You haven't entered anything in age field",agePO.getErrorMessage());
     }
 
+    //1. enter Name = zeel
+    //2. enter Age = 5
+    //3. click on submit button
+    //4. validate success message "Hello, zeel, you are a kid"
+    @Test
+    public void scenario3()
+    {
+        agePO.enterName("zeel");
+        agePO.enterAge("5");
+        agePO.clickOnSubmitBtn();
+        System.out.println(ageSubmitPO.getMessage());
+        Assert.assertEquals("Hello, zeel, you are a kid",ageSubmitPO.getMessage());
+    }
 
 
     @After
