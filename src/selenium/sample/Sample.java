@@ -15,6 +15,7 @@ public class Sample {
     static final String URL_LOCATOR = "https://kristinek.github.io/site/examples/locators";
     static final String URL_ACTIONS = "https://kristinek.github.io/site/examples/actions";
     static final String URL_ALERTS = "https://kristinek.github.io/site/examples/alerts_popups";
+    static final String URL_LOADING_COLOR = "https://kristinek.github.io/site/examples/loading_color";
 
     WebDriver driver;
 
