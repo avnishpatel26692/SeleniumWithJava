@@ -44,18 +44,20 @@ public class Sample11 {
         agePO.clickSubmit();
         System.out.println(ageSubmitPO.getMessage());
     }
+
     @Test
     public void scenario2(){
         agePO.enterName("John");
         agePO.clickSubmit();
         System.out.println(agePO.getErrorMessage());
     }
+
     @Test
     public void scenario3() {
-        agePO.enterName("John");
+        agePO.enterName("Zeel");
         agePO.enterAge("5");
         agePO.clickSubmit();
         System.out.println(ageSubmitPO.getMessage());
-        Assert.assertEquals("Hello, John, you are a kid", ageSubmitPO.getMessage());
+        Assert.assertEquals("Hello, Zeel, you are a kid", ageSubmitPO.getMessage());
     }
 }
