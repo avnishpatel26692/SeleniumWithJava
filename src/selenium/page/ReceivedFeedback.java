@@ -40,6 +40,8 @@ public class ReceivedFeedback {
     @FindBy(how = How.ID, using = "message")
     private WebElement msg;
 
+    @FindBy(how = How.XPATH, using="//*[@id='fb_thx']/div/div[2]")
+    private WebElement btnDiv;
 
     public String getName()
     {
@@ -79,6 +81,15 @@ public class ReceivedFeedback {
     }
     public String getMsgTxtColor(){
         return msg.getCssValue("color");
+    }
+    public String getBtnTextColor(){
+        return btnDiv.getCssValue("color");
+    }
+    public String getYesBgColor(){
+        return yesBtn.getCssValue("background-color");
+    }
+    public String getNoBgColor(){
+        return noBtn.getCssValue("background-color");
     }
 
 }

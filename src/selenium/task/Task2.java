@@ -78,6 +78,23 @@ public class Task2 {
 //         check fields are empty or null
 //         check button colors
 //         (green with white letter and red with white letters)
+        giveFeedBackPO.clickOnSendBtn();
+        Assert.assertEquals("",getFeedBackPO.getName());
+        Assert.assertEquals("",getFeedBackPO.getAge());
+        //checking checkboxes
+        Assert.assertEquals("", getFeedBackPO.getLang());
+        //checking gender
+        Assert.assertEquals("null", getFeedBackPO.getGender());
+        //checking dropdown value
+        Assert.assertEquals("null",getFeedBackPO.getOpinion());
+        //checking comment
+        Assert.assertEquals("",getFeedBackPO.getComment());
+
+        //btns colors
+        Assert.assertEquals(getFeedBackPO.getYesBgColor(),"rgba(76, 175, 80, 1)");
+        Assert.assertEquals(getFeedBackPO.getNoBgColor(),"rgba(244, 67, 54, 1)");
+        Assert.assertEquals(getFeedBackPO.getBtnTextColor(),"rgba(0, 0, 0, 1)");
+
     }
 
     @Test
