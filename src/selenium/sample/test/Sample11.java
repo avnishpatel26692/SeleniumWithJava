@@ -43,4 +43,10 @@ public class Sample11 {
         agePO.clickSubmit();
         System.out.println(ageSubmitPO.getMessage());
     }
+    @Test
+    public void scenario2(){
+        agePO.enterName("John");
+        agePO.clickSubmit();
+        System.out.println(agePO.getErrorMessage());
+    }
 }
