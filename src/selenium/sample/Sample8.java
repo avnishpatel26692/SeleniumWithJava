@@ -168,7 +168,7 @@ public class Sample8 {
 
     @After
     public void tearDown() throws Exception {
-        Thread.sleep(1500);
+        Thread.sleep(1500); //1.5 seconds
 
         //Close browser
         driver.quit();
