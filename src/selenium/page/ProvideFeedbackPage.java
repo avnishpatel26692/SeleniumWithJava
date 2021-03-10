@@ -132,6 +132,17 @@ public class ProvideFeedbackPage {
         public String getYesButtonColor()
         {
             return yesBtn.getCssValue("background-color");
+
+        }
+        public String getYesButtonTextColor()
+        {
+            return yesBtn.getCssValue("color");
+
+        }
+        public String getNoButtonTextColor()
+        {
+            return noBtn.getCssValue("color");
+
         }
         public String getNoButtonColor()
         {

@@ -77,15 +77,34 @@ public class CheckFeedbackPage {
 //         (green with white letter and red with white letters)
         Assert.assertEquals("rgba(76, 175, 80, 1)", giveFeedBackPO.getYesButtonColor());
         Assert.assertEquals("rgba(244, 67, 54, 1)", giveFeedBackPO.getNoButtonColor());
+        Assert.assertEquals("rgba(255, 255, 255, 1)", giveFeedBackPO.getYesButtonTextColor());
+        Assert.assertEquals("rgba(255, 255, 255, 1)", giveFeedBackPO.getNoButtonTextColor());
     }
 
     @Test
     public void notEmptyFeedbackPage()  {
 //         TODO:
-//         fill the whole form, click "Send"
+        //fill the whole form, click "Send"
+        giveFeedBackPO.enterName("Egils");
+        giveFeedBackPO.enterAge("27");
+        giveFeedBackPO.selectCheckBox(1);
+        giveFeedBackPO.selectRadioBtn(0);
+        giveFeedBackPO.selectValueFromDropDown(1);
+        giveFeedBackPO.enterComment("Thank you!");
+        giveFeedBackPO.clickOnSendBtn();
 //         check fields are filled correctly
+        Assert.assertEquals("Egils",giveFeedBackPO.getSentName());
+        Assert.assertEquals("27",giveFeedBackPO.getSentAge());
+        Assert.assertEquals("French",giveFeedBackPO.getSentLanguage());
+        Assert.assertEquals("male",giveFeedBackPO.getSentGender());
+        Assert.assertEquals("Good",giveFeedBackPO.getSentOption());
+        Assert.assertEquals("Thank you!",giveFeedBackPO.getSentComment());
 //         check button colors
 //         (green with white letter and red with white letters)
+        Assert.assertEquals("rgba(76, 175, 80, 1)", giveFeedBackPO.getYesButtonColor());
+        Assert.assertEquals("rgba(244, 67, 54, 1)", giveFeedBackPO.getNoButtonColor());
+        Assert.assertEquals("rgba(255, 255, 255, 1)", giveFeedBackPO.getYesButtonTextColor());
+        Assert.assertEquals("rgba(255, 255, 255, 1)", giveFeedBackPO.getNoButtonTextColor())
     }
 
     @Test
