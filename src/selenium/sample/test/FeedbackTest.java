@@ -167,7 +167,7 @@ public class FeedbackTest {
         Assert.assertEquals("Anna", feedbackPO.getName());
         Assert.assertEquals("26", feedbackPO.getAge());
         Assert.assertEquals("Spanish", feedbackPO.validateLanguage(2));
-        Assert.assertEquals("female", feedbackPO.validateGender(1));
+        Assert.assertEquals("Female", feedbackPO.validateGender(1));
         Assert.assertEquals("Good", feedbackPO.getTheSelectedOption());
         Assert.assertEquals("Thank you!",feedbackPO.getComment());
     }
