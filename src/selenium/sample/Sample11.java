@@ -1,6 +1,7 @@
 package selenium.sample;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -37,6 +38,7 @@ public class Sample11 {
         agePO.enterName("ABC");
         agePO.enterAge("25");
         agePO.clickOnSubmitBtn();
+        Assert.assertEquals("Hello, ABC, you are an adult",ageSubmitPO.getMessage())
         System.out.println(ageSubmitPO.getMessage());
     }
 
