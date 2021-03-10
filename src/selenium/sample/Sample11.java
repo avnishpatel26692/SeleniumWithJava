@@ -43,6 +43,17 @@ public class Sample11 {
     }
 
 
+    //1. enter Name
+    //2. click on submit Btn
+    //3. validate the error message "You haven't entered anything in age field"
+    @Test
+    public void scenario2()
+    {
+
+    }
+
+
+
     @After
     public void tearDown() throws Exception {
         Thread.sleep(1500); //1.5 seconds
