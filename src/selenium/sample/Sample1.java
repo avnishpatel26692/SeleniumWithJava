@@ -20,13 +20,12 @@ public class Sample1 {
         //open test homepage
 //        driver.get("https://google.com");
         driver.get("https://kristinek.github.io/site/tasks/enter_a_number");
-
        driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
         driver.manage().window().maximize();
 
 //        //get title of page
         System.out.println(driver.getTitle());
-//
+//System.out.print
 //        //get URL of current page
         System.out.println(driver.getCurrentUrl());
 //

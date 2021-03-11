@@ -19,7 +19,7 @@ public class Sample3{
     @Before
     public void initBrowser() {
         System.setProperty("webdriver.chrome.driver", libWithDriversLocation + "chromedriver");
-        WebDriver driver = new ChromeDriver();
+        driver = new ChromeDriver();
 
         //open test homepage
 //        driver.get("https://google.com");

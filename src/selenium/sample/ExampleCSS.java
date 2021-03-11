@@ -87,17 +87,6 @@ public class ExampleCSS {
     }
 
 
-    }
-
-    @Test
-    public void CSS() {
-
-    }
-
-    @Test
-    public void CSS2() {
-
-    }
         @After
         public void tearDown () throws Exception {
             Thread.sleep(3000);
